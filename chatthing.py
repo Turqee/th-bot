@@ -2,8 +2,6 @@ import os, random, discord
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 
-discord_token = "secret"
-
 load_dotenv()
 
 TOKEN = 'secret'
@@ -39,7 +37,7 @@ async def on_message(message):
         x = random.randint(0,101)
         y = random.randint(0,101)
         answer = x + y
-        math_output = '{} + {} = {}'.format(x,y,answer) 
+        math_output = '{} + {} = {}'.format(x,y,answer)
         await message.channel.send(math_output)
 ##    if message.content == 't!numberguess':
 ##        guess = int(input('Guess youre number: ')
