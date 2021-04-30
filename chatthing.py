@@ -54,4 +54,10 @@ async def on_message(message):
         inspiration = inspiration[0]
         inspiration = inspiration[:-3]
         await message.channel.send(inspiration)
+    if message.content == 't!help':
+        info = '''  Commands list:
+                    - t!inspiration
+                    - t!randomquotes
+                    - t!randommath'''
+        await message.channel.send(info)
 client.run(TOKEN)
