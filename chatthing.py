@@ -12,14 +12,10 @@ client = discord.Client()
 
 def main(argv):
    
-    try:
-        TOKEN = getopt.getopt(argv,"TOKEN")
-    except:
-        pass
-    for opt in argv:
-        if opt == '-h':
-            print('test.py <TOKEN>')
-            sys.exit()
+
+    TOKEN = sys.argv[0]
+    print(TOKEN)
+
 
 
 
@@ -75,8 +71,8 @@ def main(argv):
                         - t!randommath'''
             await message.channel.send(info)
     client.run(TOKEN)
-
+    
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv[0:])
