@@ -39,7 +39,7 @@ def main(argv):
                 'thanks to lam 2 '
                 'this took 1~ months (because i barley programed LOL! XD! LMAO!)'
             ),
-        ]
+        ] 
 
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
@@ -70,6 +70,9 @@ def main(argv):
                         - t!randomquotes
                         - t!randommath'''
             await message.channel.send(info)
+        if message.content == 't!embed':
+            embed=discord.Embed(title="Sample Embed", url="https://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
+            await message.channel.send(embed)
     client.run(TOKEN)
     
 
