@@ -5,15 +5,15 @@ from urllib.request import urlopen, Request
 load_dotenv()
 
 
-client = discord.Client()
+
 
 
 
 
 def main(argv):
-   
+    client = discord.Client()
 
-    TOKEN = sys.argv[0]
+    TOKEN = sys.argv[1]
     print(TOKEN)
 
 
@@ -78,4 +78,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[0:])
+    main(sys.argv[1:])
