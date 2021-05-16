@@ -21,7 +21,7 @@ def main(argv):
 
     @client.event
     async def on_message(message):
-
+        
         if message.author == client.user:
             return
 
@@ -67,27 +67,32 @@ def main(argv):
 
 
         if message.content.startswith('t!cvf'):
-            message_content = message.content.split()
-            arg = message_content[1]
-
-            lst = arg.split("=")
-            for x in lst:
-                if "+" in x:
-                    y = lst[0]
-                    temp=lst[1].split("+")
-                    mx = temp[0]
-                    answer = temp[1]
-                elif "-" in x:
-                    y = lst[0]
-                    temp=lst[1].split("-")
-                    mx = temp[0]
-                    answer = temp[1]
-            if "+" in arg:
-                cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
+            message_content = message.content[5:]
+            print(len(message_content))
+            if len(message_content) <= 0:
+                cvf_answer= "What are you a monkey man? enter `t!cvf y=mx+b` and you get banana"
             else:
-                cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
-            await message.channel.send(cvf_answer)
+                #print(message_content.strip())
+                arg = message_content.replace(" ", "")
 
+                lst = arg.split("=")
+                for x in lst:
+                    if "+" in x:
+                        y = lst[0]
+                        temp=lst[1].split("+")
+                        mx = temp[0]
+                        answer = temp[1]
+                    elif "-" in x:
+                        y = lst[0]
+                        temp=lst[1].split("-")
+                        mx = temp[0]
+                        answer = temp[1]
+                if "+" in arg:
+                    cvf_answer="Youre ansswer do be: {}x - {} = {} :flushed:".format(mx, y, answer)
+                else:
+                    cvf_answer="Youre ansssswer do be: {}x + {} = {} :flushed:".format(mx, y, answer)
+            await message.channel.send(cvf_answer)
+                
     client.run(TOKEN)
 
 
