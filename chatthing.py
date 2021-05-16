@@ -74,7 +74,7 @@ def main(argv):
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
             await message.channel.send(embed=info)
     @client.event
-    async def in(ctx,arg):
+    async def cvf(ctx,arg):
         if message.content == 't!cvf':
             lst = arg.split("=")
             for x in lst:
@@ -93,6 +93,7 @@ def main(argv):
                 cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
             else:
                 cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
+            await message.channel.send(cvf_answer)
                 
     client.run(TOKEN)
 
