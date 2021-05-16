@@ -39,7 +39,7 @@ def main(argv):
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
-                'thanks to lam 2 '
+                'thanks to lam 2 ',
                 'this took 1~ months (because i barley programed LOL! XD! LMAO!)'
             ),
         ]
@@ -73,6 +73,27 @@ def main(argv):
             info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
             await message.channel.send(embed=info)
+    @client.event
+    async def in(ctx,arg):
+        if message.content == 't!cvf':
+            lst = arg.split("=")
+            for x in lst:
+                if "+" in x:
+                    y = lst[0]
+                    temp=lst[1].split("+")
+                    mx = temp[0]
+                    answer = temp[1]
+
+                elif "-" in x:
+                    y = lst[0]
+                    temp=lst[1].split("-")
+                    mx = temp[0]
+                    answer = temp[1]
+            if "+" in arg:
+                cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
+            else:
+                cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
+                
     client.run(TOKEN)
 
 
