@@ -24,10 +24,10 @@ def main(argv):
     @client.event
     async def on_ready():
         print("We have logged  in as {}".format(client))
-    @client.event
-    async def embed(ctx):
-        embed=discord.Embed(title="Sample Embed", url="httpfs://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
-        await message.channel.send(embed)
+    #@client.event
+    #async def embed(ctx):
+        #embed=discord.Embed(title="Sample Embed", url="httpfs://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
+        #await message.channel.send(embed)
 
 
     @client.event
@@ -68,11 +68,11 @@ def main(argv):
             inspiration = inspiration[:-3]
             await message.channel.send(inspiration)
         if message.content == 't!help':
-            info = '''  Commands list:
-                        - t!inspiration
-                        - t!randomquotes
-                        - t!randommath'''
-            await message.channel.send(info)
+            info = discord.Embed(title="Commands list:",  description='''\
+            - t!inspiration\
+            - t!randomquotes\
+            - t!randommath\''', color=0x28e038)
+            await message.channel.send(embed=info)
 
     client.run(TOKEN)
 
