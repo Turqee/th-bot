@@ -68,11 +68,10 @@ def main(argv):
             inspiration = inspiration[:-3]
             await message.channel.send(inspiration)
         if message.content == 't!help':
-            info = discord.Embed(title="Commands list:",  description='''\
-            - t!inspiration\
-            - t!randomquotes\
-            - t!randommath\''', color=0x28e038)
-            await message.channel.send(embed=info)
+            info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
+            info.add_field(name="t!inspiration", value="makes you go :O" inline=False)
+            info.add_field(name="t!randommath", value="random addition. adds numbers 1-100" inline=False) 
+            info.add_field(name="t!randomquotes", value="random quotes, made by yours truly" inline=False)
 
     client.run(TOKEN)
 
