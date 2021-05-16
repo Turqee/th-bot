@@ -75,6 +75,7 @@ def main(argv):
             info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
             info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
+            info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't nake y a number, and don't add spaces)", inline=False)
             await message.channel.send(embed=info)
 
 
