@@ -21,7 +21,7 @@ def main(argv):
 
     @client.event
     async def on_message(message):
-        
+
         if message.author == client.user:
             return
 
@@ -87,7 +87,7 @@ def main(argv):
             else:
                 cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
             await message.channel.send(cvf_answer)
-                
+
     client.run(TOKEN)
 
 
