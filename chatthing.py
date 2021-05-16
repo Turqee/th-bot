@@ -7,12 +7,6 @@ from discord.ext import commands
 
 load_dotenv()
 
-
-
-
-
-
-
 def main(argv):
     client = discord.Client()
     bot = commands.Bot(command_prefix="t!")
@@ -20,21 +14,14 @@ def main(argv):
     print(TOKEN)
 
 
-
-
-
-
     @client.event
     async def on_ready():
         print("We have logged  in as {}".format(client))
-    #@client.event
-    #async def embed(ctx):
-        #embed=discord.Embed(title="Sample Embed", url="httpfs://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
-        #await message.channel.send(embed)
 
 
     @client.event
     async def on_message(message):
+        
         if message.author == client.user:
             return
 
@@ -78,31 +65,27 @@ def main(argv):
             await message.channel.send(embed=info)
 
 
+        if message.content.startswith('t!cvf'):
+            message_content = message.content.split()
+            arg = message_content[1]
 
-            
-        @bot.command()
-        async def cvf(ctx,*arg):
-            if cvf.author == client.user:
-                return
-            if cvf.content == 't!cvf':
-                lst = arg.split("=")
-                for x in lst:
-                    if "+" in x:
-                        y = lst[0]
-                        temp=lst[1].split("+")
-                        mx = temp[0]
-                        answer = temp[1]
-
-                    elif "-" in x:
-                        y = lst[0]
-                        temp=lst[1].split("-")
-                        mx = temp[0]
-                        answer = temp[1]
-                if "+" in arg:
-                    cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
-                else:
-                    cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
-            await ctx.channel.send(cvf_answer)
+            lst = arg.split("=")
+            for x in lst:
+                if "+" in x:
+                    y = lst[0]
+                    temp=lst[1].split("+")
+                    mx = temp[0]
+                    answer = temp[1]
+                elif "-" in x:
+                    y = lst[0]
+                    temp=lst[1].split("-")
+                    mx = temp[0]
+                    answer = temp[1]
+            if "+" in arg:
+                cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
+            else:
+                cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
+            await message.channel.send(cvf_answer)
                 
     client.run(TOKEN)
 
