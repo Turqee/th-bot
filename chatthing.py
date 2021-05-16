@@ -24,7 +24,7 @@ def main(argv):
     @client.event
     async def on_ready():
         print("We have logged  in as {}".format(client))
-    @client.command
+    @client.event
     async def embed(ctx):
         embed=discord.Embed(title="Sample Embed", url="httpfs://realdrewdata.medium.com/", description="This is an embed that will show how to build an embed and the different components", color=0xFF5733)
         await ctx.send(embed=embed)
