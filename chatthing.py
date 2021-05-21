@@ -25,12 +25,17 @@ def main(argv):
         if message.author == client.user:
             return
 
+    @bot.command()
+    async def ping(ctx):
+        await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
+
         random_quotes = [
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
-                'thanks to lam 2 ',
-                'this took 1~ months (because i barley programed LOL! XD! LMAO!)'
+            'thanks to lam 2',
+            'this took 1~ months (because i barley programed LOL! XD! LMAO!)',
+            'edskidesp1',
             ),
         ]
 
@@ -87,6 +92,7 @@ def main(argv):
             else:
                 cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
             await message.channel.send(cvf_answer)
+            
                 
     client.run(TOKEN)
 
