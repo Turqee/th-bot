@@ -67,30 +67,35 @@ def main(argv):
             info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
             info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
-            info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't nake y a number, and don't add spaces)", inline=False)
+            info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
             await message.channel.send(embed=info)
 
 
         if message.content.startswith('t!cvf'):
-            message_content = message.content.split()
-            arg = message_content[1]
-
-            lst = arg.split("=")
-            for x in lst:
-                if "+" in x:
-                    y = lst[0]
-                    temp=lst[1].split("+")
-                    mx = temp[0]
-                    answer = temp[1]
-                elif "-" in x:
-                    y = lst[0]
-                    temp=lst[1].split("-")
-                    mx = temp[0]
-                    answer = temp[1]
-            if "+" in arg:
-                cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
+            message_content = message.content[5:]
+            print(len(message_content))
+            if len(message_content) <= 0:
+                cvf_answer= "What are you a monkey man? enter `t!cvf y=mx+b` and you get banana"
             else:
-                cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
+                #print(message_content.strip())
+                arg = message_content.replace(" ", "")
+
+                lst = arg.split("=")
+                for x in lst:
+                    if "+" in x:
+                        y = lst[0]
+                        temp=lst[1].split("+")
+                        mx = temp[0]
+                        answer = temp[1]
+                    elif "-" in x:
+                        y = lst[0]
+                        temp=lst[1].split("-")
+                        mx = temp[0]
+                        answer = temp[1]
+                if "+" in arg:
+                    cvf_answer="Youre ansswer do be: {}x - {} = {} :flushed:".format(mx, y, answer)
+                else:
+                    cvf_answer="Youre ansssswer do be: {}x + {} = {} :flushed:".format(mx, y, answer)
             await message.channel.send(cvf_answer)
             
                 
