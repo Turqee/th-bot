@@ -45,7 +45,7 @@ def main(argv):
 
     if message.content == 't!randomquotes':
         response = random.choice(random_quotes)
-        await message.channel.send(response)
+    await message.channel.send(response)
 
     if message.content == 't!randommath':
         x = random.randint(0,101)
