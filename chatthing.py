@@ -23,10 +23,7 @@ def main(argv):
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
-    
-    print('Connected to bot: {}'.format(client.user.name))
-    print('Bot ID: {}'.format(client.user.id))
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='damian official - imposter | t!help for help'))
         
     @client.event
     async def on_message(message):
