@@ -18,9 +18,9 @@ def main(argv):
     async def on_ready():
         print("We have logged  in as {}".format(client))
 
-    @client.event
-    async def on_ready():
-            await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
+    #@client.event
+    #async def on_ready():
+    #       await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
 
     @client.event
     async def on_message(message):
