@@ -20,6 +20,14 @@ def main(argv):
     @client.event
     async def on_ready():
         print("We have logged  in as {}".format(client))
+
+    @client.event
+    async def on_ready():
+        await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
+    
+    print('Connected to bot: {}'.format(client.user.name))
+    print('Bot ID: {}'.format(client.user.id))
+        
     @client.event
     async def on_message(message):
         
