@@ -7,33 +7,25 @@ from discord.ext import commands
 
 load_dotenv()
 
+
 def main(argv):
     client = discord.Client()
+    
     bot = commands.Bot(command_prefix="t!")
+    
     TOKEN = sys.argv[1]
+    
     print(TOKEN)
-
-
+    
     @client.event
     async def on_ready():
         print("We have logged  in as {}".format(client))
-
-    #@client.event
-    #async def on_ready():
-    #       await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
-
     @client.event
     async def on_message(message):
         
         if message.author == client.user:
             return
-
-    
-    print('Connected to bot: {}'.format(client.user.name))
-    print('Bot ID: {}'.format(client.user.id))
-
-
-    random_quotes = [
+        random_quotes = [
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
@@ -94,8 +86,5 @@ def main(argv):
             await message.channel.send(cvf_answer)
                 
     client.run(TOKEN)
-
-
-
 if __name__ == "__main__":
     main(sys.argv[1:])
