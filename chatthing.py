@@ -91,7 +91,7 @@ def main(argv):
             await message.channel.send(cvf_answer)
     @bot.event
     async def on_message(message):
-mention = f'<@!{bot.user.id}>'
+        mention = f'<@!{bot.user.id}>'
         if mention in message.content:
             await message.channel.send("You mentioned me")
                 
