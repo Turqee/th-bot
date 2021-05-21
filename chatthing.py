@@ -30,13 +30,13 @@ def main(argv):
     print('Bot ID: {}'.format(client.user.id))
 
 
-        random_quotes = [
-            'bro this bot took too long',
-            'so guys in this tutorial im gonna teach you how to be funny',
+    random_quotes = [
+        'bro this bot took too long',
+        'so guys in this tutorial im gonna teach you how to be funny',
             (
-            'thanks to lam 2',
-            'this took 1~ months (because i barley programed LOL! XD! LMAO!)',
-            'edskidesp1',
+        'thanks to lam 2',
+        'this took 1~ months (because i barley programed LOL! XD! LMAO!)',
+        'edskidesp1',
             ),
         ]
 
