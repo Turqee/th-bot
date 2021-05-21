@@ -42,14 +42,14 @@ def main(argv):
 
     if message.content == 't!randomquotes':
         response = random.choice(random_quotes)
-        await message.channel.send(response)
+            await message.channel.send(response)
 
     if message.content == 't!randommath':
         x = random.randint(0,101)
         y = random.randint(0,101)
         answer = x + y
         math_output = '{} + {} = {}'.format(x,y,answer)
-        await message.channel.send(math_output)
+            await message.channel.send(math_output)
     ##    if message.content == 't!numberguess':
     ##        guess = int(input('Guess youre number: ')
     if message.content == 't!inspiration':
@@ -62,14 +62,14 @@ def main(argv):
         inspiration = html[1].split("quoteAuthor")
         inspiration = inspiration[0]
         inspiration = inspiration[:-3]
-        await message.channel.send(inspiration)
+            await message.channel.send(inspiration)
     if message.content == 't!help':
         info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
         info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
         info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
         info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
         info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't nake y a number, and don't add spaces)", inline=False)
-        await message.channel.send(embed=info)
+            await message.channel.send(embed=info)
 
 
     if message.content.startswith('t!cvf'):
@@ -92,7 +92,7 @@ def main(argv):
             cvf_answer="Youre ansswer do be: {} - {} = {} :flushed:".format(mx, y, answer)
         else:
             cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
-        await message.channel.send(cvf_answer)
+            await message.channel.send(cvf_answer)
 
     @client.event
     async def on_ready():
