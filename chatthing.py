@@ -25,15 +25,13 @@ def main(argv):
         if message.author == client.user:
             return
 
-    @bot.command(pass_context=True)
-    async def ping(ctx):
-        """ Pong! """
-        await delete_message(ctx.message)
-        before = time.monotonic()
-        message = await ctx.send("Pong!")
-        ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong!  `{int(ping)}ms`")
-        print(f'Ping {int(ping)}ms')
+    @client.event
+    async def on_ready():
+        await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
+    
+    print('Connected to bot: {}'.format(client.user.name))
+    print('Bot ID: {}'.format(client.user.id))
+
 
         random_quotes = [
             'bro this bot took too long',
