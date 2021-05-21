@@ -33,7 +33,7 @@ def main(argv):
     print('Bot ID: {}'.format(client.user.id))
 
 
-        random_quotes = [
+    random_quotes = [
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
