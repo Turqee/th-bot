@@ -33,7 +33,7 @@ def main(argv):
     print('Bot ID: {}'.format(client.user.id))
 
 
-            random_quotes = [
+    random_quotes = [
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
@@ -43,9 +43,9 @@ def main(argv):
             ),
         ]
 
-        if message.content == 't!randomquotes':
-            response = random.choice(random_quotes)
-            await message.channel.send(response)
+    if message.content == 't!randomquotes':
+        response = random.choice(random_quotes)
+        await message.channel.send(response)
 
         if message.content == 't!randommath':
             x = random.randint(0,101)
