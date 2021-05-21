@@ -89,8 +89,11 @@ def main(argv):
             else:
                 cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
             await message.channel.send(cvf_answer)
-        if message.content == "<@820435029129822298>":
-            await message.channel.send(embed=info)
+    @bot.event
+    async def on_message(message):
+    mention = f'<@!{bot.user.id}>'
+        if mention in message.content:
+            await message.channel.send("You mentioned me")
                 
     client.run(TOKEN)
 if __name__ == "__main__":
