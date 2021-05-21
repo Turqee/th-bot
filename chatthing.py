@@ -25,15 +25,15 @@ def main(argv):
         if message.author == client.user:
             return
 
-    @client.event
-    async def on_ready():
-        await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
+        @client.event
+        async def on_ready():
+            await client.change_presence(activity=discord.Game('damian official - imposter | t!help'))
     
     print('Connected to bot: {}'.format(client.user.name))
     print('Bot ID: {}'.format(client.user.id))
 
 
-    random_quotes = [
+        random_quotes = [
             'bro this bot took too long',
             'so guys in this tutorial im gonna teach you how to be funny',
             (
@@ -43,7 +43,7 @@ def main(argv):
             ),
         ]
 
-    if message.content == 't!randomquotes':
+        if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
             await message.channel.send(response)
 
