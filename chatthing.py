@@ -1,8 +1,8 @@
-import os, random, discord, sys, getopt
+import os, random, discord, sys, getopt, time
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 from discord.ext.commands import Bot
-from discord.ext import commands
+from discord.ext import commands 
 
 
 load_dotenv()
@@ -10,23 +10,28 @@ load_dotenv()
 
 def main(argv):
     client = discord.Client()
+
+    # intents = discord.Intents().all()
     
     bot = commands.Bot(command_prefix="t!")
     
     TOKEN = sys.argv[1]
     
     print(TOKEN)
+  #  print('please error') (debug)
     
     @client.event
     async def on_ready():
+      #  print('made it to client.event') (debug)
         print("We have logged  in as {}".format(client))
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='damian official - imposter | t!help for help'))
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.Game, name='eating baby powder | t!help for help'))
         
     @client.event
     async def on_message(message):
+       # print('made it to on_message') (for debug)
         
         if message.author == client.user:
             return
@@ -89,10 +94,22 @@ def main(argv):
             else:
                 cvf_answer="Youre ansssswer do be: {} + {} = {} :flushed:".format(mx, y, answer)
             await message.channel.send(cvf_answer)
-        mention = f'<@!{bot.user.id}>'
-        if mention in message.content:
-            await message.channel.send("You mentioned me")
-                
+
+
+        if message.content.startswith('t!ping'):
+            start = time.time()
+            latency = message.timestamp
+            end = time.time()
+            execution_time = end - start
+            #embedding execution time and latency under
+            ping_title = discord.Embed(title="pong :ping_pong:",color=0x005ef5)
+            ping_title.add_field(name="Execution Time", value=execution_time, inline=False)
+            ping_title.add_field(name="Latency", value=str(message.latency), inline=False)
+        await message.channel.send(embed=ping_title)
+
+
+
+
     client.run(TOKEN)
 if __name__ == "__main__":
     main(sys.argv[1:])
