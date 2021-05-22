@@ -27,7 +27,7 @@ def main(argv):
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity=discord.Activity(type=discord.Streaming(), name='eating baby powder | t!help for help'))
+        await client.change_presence(activity=discord.Streaming(name='eating baby powder | t!help for help', url='https://www.twitch.tv/ztheroy')
         
     @client.event
     async def on_message(message):
