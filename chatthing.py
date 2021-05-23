@@ -23,12 +23,9 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
+        await client.change_presence(activity=discord.Streaming(name='eating baby powder | t!help for help', url='https://www.twitch.tv/ztheroy'))
         print("We have logged  in as {}".format(client))
-
-    @client.event
-    async def on_ready():
-        await client.change_presence(activity=discord.Streaming(name='eating baby powder | t!help for help', url='https://www.twitch.tv/ztheroy')
-        
+    
     @client.event
     async def on_message(message):
        # print('made it to on_message') (for debug)
@@ -107,7 +104,7 @@ def main(argv):
             ping_title.add_field(name="Latency", value=str(message.latency), inline=False)
         await message.channel.send(embed=ping_title)
 
-
+        
 
 
     client.run(TOKEN)
