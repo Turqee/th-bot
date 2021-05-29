@@ -23,8 +23,8 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Streaming(name='eating baby powder | t!help for help', url='https://www.twitch.tv/ztheroy'))
-        await client.change_presence(status=discord.Status.idle, activity=activity)
+        await client.change_presence(activity=discord.Game('with knives | t!help for help'))
+        await client.change_presence(status=discord.Status.idle)
         print("We have logged  in as {}".format(client))
     
     @client.event
@@ -69,6 +69,8 @@ def main(argv):
             info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
             info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
+            info.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
+            info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 12AM AND I HAVENT SLEPT GOD", inline=False)
             await message.channel.send(embed=info)
 
 
@@ -96,15 +98,19 @@ def main(argv):
 
         if message.content.startswith('t!ping'):
             start = time.time()
-            latency = message.timestamp
+            latency = message.channel.created_at 
             end = time.time()
             execution_time = end - start
             #embedding execution time and latency under
             ping_title = discord.Embed(title="pong :ping_pong:",color=0x005ef5)
-            ping_title.add_field(name="Execution Time", value=execution_time, inline=False)
-            ping_title.add_field(name="Latency", value=str(message.latency), inline=False)
-        await message.channel.send(embed=ping_title)
+            ping_title.add_field(name="Execution Time", value=(f"{execution_time} seconds"), inline=False)
+            ping_title.add_field(name="Latency", value=str(round(client.latency*1000))+" ms", inline=False)
+            await message.channel.send(embed=ping_title)
 
+        if message.content.startswith('t!github'):
+            github_title = discord.Embed(title="Code for Bot",  description="Steal the code for this bot! (Programmed in python 3+)", color=0xd9cf14)
+            github_title.add_field(name="Github", value="https://github.com/zTheroy/theroy-discord-bot", inline=False)
+        await message.channel.send(embed=github_title)
         
 
 
