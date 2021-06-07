@@ -30,6 +30,18 @@ def main(argv):
     @client.event
     async def on_message(message):
        # print('made it to on_message') (for debug)
+
+
+
+##        if message.content.startswith('t!numberguess'):
+##            player = message.author
+##            def check(m):
+##                print('checking new message')
+##                return message.content.startswith('yes') and m .author == player
+##            print(player)
+##            await message.channel.send('Discord, yes or no?')
+##            msg = await client.wait_for('message', check = check, timeout=60)
+##            await message.channel.send('poopybutt -nieko')
         
         if message.author == client.user:
             return
@@ -45,11 +57,19 @@ def main(argv):
             response = random.choice(random_quotes)
             await message.channel.send(response)
         if message.content == 't!randommath':
+            math_output = discord.Embed(title="math",  description="math answer", color=0x11d43b)
             x = random.randint(0,101)
             y = random.randint(0,101)
             answer = x + y
+            answer = x - y
+            answer = x * y
+            answer = x / y
             math_output = '{} + {} = {}'.format(x,y,answer)
-            await message.channel.send(math_output)
+            math_output = '{} - {} = {}'.format(x,y,answer)
+            math_output = '{} * {} = {}'.format(x,y,answer)
+            math_output = '{} / {} = {}'.format(x,y,answer)
+            math_output.add_field(name="oh my god its your math answer", value=math_output, inline=False)
+            await message.channel.send(embed=math_output)
     ##    if message.content == 't!numberguess':
     ##        guess = int(input('Guess youre number: ')
         if message.content == 't!inspiration':
@@ -110,7 +130,7 @@ def main(argv):
         if message.content.startswith('t!github'):
             github_title = discord.Embed(title="Code for Bot",  description="Steal the code for this bot! (Programmed in python 3+)", color=0xd9cf14)
             github_title.add_field(name="Github", value="https://github.com/zTheroy/theroy-discord-bot", inline=False)
-        await message.channel.send(embed=github_title)
+            await message.channel.send(embed=github_title)
         
 
 
