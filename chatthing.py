@@ -58,8 +58,8 @@ def main(argv):
             await message.channel.send(response)
         if message.content == 't!randommath':
             math_output = discord.Embed(title="math",  description="math answer", color=0x11d43b)
-            x = random.randint(0,101)
-            y = random.randint(0,101)
+            x = random.randint(0,1001)
+            y = random.randint(0,1001)
             answer = x + y
             answer = x - y
             answer = x * y
