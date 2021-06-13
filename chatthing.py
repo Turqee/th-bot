@@ -23,7 +23,7 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Game('with knives | t!help for help'))
+        await client.change_presence(activity=discord.Streaming(name='balls | t!help', url='http://theroy.tech/'))
         print("We have logged  in as {}".format(client))
     
     @client.event
