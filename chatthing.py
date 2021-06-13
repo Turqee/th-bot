@@ -24,7 +24,6 @@ def main(argv):
     async def on_ready():
       #  print('made it to client.event') (debug)
         await client.change_presence(activity=discord.Game('with knives | t!help for help'))
-        await client.change_presence(status=discord.Status.idle)
         print("We have logged  in as {}".format(client))
     
     @client.event
