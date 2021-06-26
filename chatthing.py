@@ -23,13 +23,12 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Streaming(name='balls | t!help', url='http://theroy.tech/'))
+        await client.change_presence(activity=discord.Streaming(name='balls | t!help', url='https://www.twitch.tv/ztheroy'))
         print("We have logged  in as {}".format(client))
     
     @client.event
     async def on_message(message):
        # print('made it to on_message') (for debug)
-
 
 
 ##        if message.content.startswith('t!numberguess'):
@@ -41,36 +40,39 @@ def main(argv):
 ##            await message.channel.send('Discord, yes or no?')
 ##            msg = await client.wait_for('message', check = check, timeout=60)
 ##            await message.channel.send('poopybutt -nieko')
+
+
+        random_quotes = []
         
-        if message.author == client.user:
-            return
-        random_quotes = [
-            'bro this bot took too long',
-            'so guys in this tutorial im gonna teach you how to be funny',
-            (
-                'thanks to lam 2 ',
-                'this took 1~ months (because i barley programed LOL! XD! LMAO!)'
-            ),
-        ]
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
             await message.channel.send(response)
         if message.content == 't!randommath':
-            math_output = discord.Embed(title="math",  description="math answer", color=0x11d43b)
-            x = random.randint(0,1001)
-            y = random.randint(0,1001)
-            answer = x + y
-            answer = x - y
-            answer = x * y
-            answer = x / y
-            math_output = '{} + {} = {}'.format(x,y,answer)
-            math_output = '{} - {} = {}'.format(x,y,answer)
-            math_output = '{} * {} = {}'.format(x,y,answer)
-            math_output = '{} / {} = {}'.format(x,y,answer)
-            math_output.add_field(name="oh my god its your math answer", value=math_output, inline=False)
-            await message.channel.send(embed=math_output)
-    ##    if message.content == 't!numberguess':
-    ##        guess = int(input('Guess youre number: ')
+            lst = ['+', '-', '*', '/']
+            math_embed = discord.Embed(title="math", description="math answer", color=0x11d43b)
+            x = random.randint(-45000,45000)
+            y = random.randint(-45000,45000)
+            random_operator=random.randint(0,len(lst)-1)
+            if lst[random_operator] == '+':
+                answer = x + y
+                math_output = '{} + {} = {}'.format(x,y,answer)
+            elif lst[random_operator] == '-':
+                answer = x - y
+                math_output = '{} - {} = {}'.format(x,y,answer)
+            elif lst[random_operator] == '*':
+                answer = x * y
+                math_output = '{} * {} = {}'.format(x,y,answer)
+            elif lst[random_operator] == '/':
+                answer = x / y
+                math_output = '{} / {} = {}'.format(x,y,answer)
+            elif x < 0 and y < 0 and lst[random_operator] == '-':
+                y = abs(y)
+                answer = x + y
+                math_output = '{} + {} = {}'.format(x,y,answer)
+                print(y)
+            math_embed.add_field(name="oh my god its your math answer", value=math_output, inline=False)
+            await message.channel.send(embed=math_embed)
+            
         if message.content == 't!inspiration':
             random_quote = Request('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', headers={'User-Agent': 'Mozilla/5.0'})
             page = urlopen(random_quote)
@@ -85,11 +87,11 @@ def main(argv):
         if message.content == 't!help':
             info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
             info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
-            info.add_field(name="t!randommath", value="random addition. adds numbers 1-100", inline=False)
+            info.add_field(name="t!randommath", value="random math. adds numbers -45000-45000", inline=False)
             info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
             info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
             info.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
-            info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 12AM AND I HAVENT SLEPT GOD", inline=False)
+            info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
             await message.channel.send(embed=info)
 
 
