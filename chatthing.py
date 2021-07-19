@@ -44,6 +44,16 @@ def main(argv):
 
         random_quotes = []
 
+        if message.content == 't!help':
+            info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
+            info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
+            info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
+            info.add_field(name=":thinking:`t!randomquotes`", value="random quotes, made by yours truly", inline=True)
+            info.add_field(name=":ab:`t!cvf y=mx+b`", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
+            info.add_field(name=":ping_pong:`t!ping`", value="would send the time it takes to run the code but it doeSNT WORK", inline=False)
+            info.set_footer(text='[sumbit ideas and issues](https://github.com/zTheroy/theroy-discord-bot/issues)')
+            await message.channel.send(embed=info)
+
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
             await message.channel.send(response)
@@ -84,15 +94,7 @@ def main(argv):
             inspiration = inspiration[0]
             inspiration = inspiration[:-3]
             await message.channel.send(inspiration)
-        if message.content == 't!help':
-            info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
-            info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
-            info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
-            info.add_field(name=":thinking:`t!randomquotes`", value="random quotes, made by yours truly", inline=True)
-            info.add_field(name=":ab:`t!cvf y=mx+b`", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
-            info.add_field(name=":ping_pong:`t!ping`", value="would send the time it takes to run the code but it doeSNT WORK", inline=False)
-            info.set_footer(text='https://github.com/zTheroy/theroy-discord-bot/issues')
-            await message.channel.send(embed=info)
+
 
 
         if message.content.startswith('t!cvf'):
