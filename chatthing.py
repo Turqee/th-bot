@@ -86,13 +86,15 @@ def main(argv):
             await message.channel.send(inspiration)
         if message.content == 't!help':
             info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
-            info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
-            info.add_field(name="t!randommath", value="random math. adds numbers -45000-45000", inline=False)
-            info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
-            info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
-            info.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
-            info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
-            info.set_footer(text='footer moment')
+            info.add_field(name="**random things**", value="things that say random things", inline=False)
+            info.add_field(name="`t!inspiration`", value="makes you go :O", inline=False)
+            info.add_field(name="`t!randommath`", value="random math. adds numbers -45000-45000", inline=False)
+            info.add_field(name="`t!randomquotes`", value="random quotes, made by yours truly", inline=False)
+            info.add_field(name="**math commands**", value="", inline=False)
+            info.add_field(name="`t!cvf y=mx+b`", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
+            info.add_field(name="**wip commands**", value="", inline=False)
+            info.add_field(name="`t!ping`", value="would send the time it takes to run the code but it doeSNT WORK", inline=False)
+            info.set_footer(text='https://github.com/zTheroy/theroy-discord-bot/issues')
             await message.channel.send(embed=info)
 
 
@@ -128,21 +130,6 @@ def main(argv):
             ping_title.add_field(name="Execution Time", value=(f"{execution_time} seconds"), inline=False)
             ping_title.add_field(name="Latency", value=str(round(client.latency*1000))+" ms", inline=False)
             await message.channel.send(embed=ping_title)
-
-        if message.content.startswith('t!github'):
-            github_title = discord.Embed(title="Code for Bot",  description="Steal the code for this bot! (Programmed in python 3+)", color=0xd9cf14)
-            github_title.add_field(name="Github", value="https://github.com/zTheroy/theroy-discord-bot", inline=False)
-            await message.channel.send(embed=github_title)
-
-        if message.content.startswith('t!'):
-            info2 = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
-            info2.add_field(name="t!inspiration", value="makes you go :O", inline=False)
-            info2.add_field(name="t!randommath", value="random math. adds numbers -45000-45000", inline=False)
-            info2.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
-            info2.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
-            info2.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
-            info2.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
-            await message.channel.send(embed=info)
 
 
     client.run(TOKEN)
