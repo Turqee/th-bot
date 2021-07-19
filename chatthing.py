@@ -23,7 +23,7 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Game('in a midwest tornado | t!help'))
+        await client.change_presence(activity=discord.Game('Geometry Dash | t!help'))
         print("We have logged  in as {}".format(client))
     
     @client.event
