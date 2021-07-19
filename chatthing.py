@@ -2,7 +2,7 @@ import os, random, discord, sys, getopt, time
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 from discord.ext.commands import Bot
-from discord.ext import commands 
+from discord.ext import commands
 
 
 load_dotenv()
@@ -12,20 +12,20 @@ def main(argv):
     client = discord.Client()
 
     # intents = discord.Intents().all()
-    
+
     bot = commands.Bot(command_prefix="t!")
-    
+
     TOKEN = sys.argv[1]
-    
+
     print(TOKEN)
   #  print('please error') (debug)
-    
+
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
         await client.change_presence(activity=discord.Game('Geometry Dash | t!help'))
         print("We have logged  in as {}".format(client))
-    
+
     @client.event
     async def on_message(message):
        # print('made it to on_message') (for debug)
@@ -43,7 +43,7 @@ def main(argv):
 
 
         random_quotes = []
-        
+
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
             await message.channel.send(response)
@@ -72,7 +72,7 @@ def main(argv):
                 print(y)
             math_embed.add_field(name="oh my god its your math answer", value=math_output, inline=False)
             await message.channel.send(embed=math_embed)
-            
+
         if message.content == 't!inspiration':
             random_quote = Request('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', headers={'User-Agent': 'Mozilla/5.0'})
             page = urlopen(random_quote)
@@ -92,6 +92,7 @@ def main(argv):
             info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
             info.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
             info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
+            info.set_footer(text='footer moment')
             await message.channel.send(embed=info)
 
 
@@ -119,7 +120,7 @@ def main(argv):
 
         if message.content.startswith('t!ping'):
             start = time.time()
-            latency = message.channel.created_at 
+            latency = message.channel.created_at
             end = time.time()
             execution_time = end - start
             #embedding execution time and latency under
