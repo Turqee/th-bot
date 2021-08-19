@@ -2,7 +2,7 @@ import os, random, discord, sys, getopt, time
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 from discord.ext.commands import Bot
-from discord.ext import commands 
+from discord.ext import commands
 
 
 load_dotenv()
@@ -12,20 +12,20 @@ def main(argv):
     client = discord.Client()
 
     # intents = discord.Intents().all()
-    
+
     bot = commands.Bot(command_prefix="t!")
-    
+
     TOKEN = sys.argv[1]
-    
+
     print(TOKEN)
   #  print('please error') (debug)
-    
+
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Game('in a midwest tornado | t!help'))
+        await client.change_presence(activity=discord.Game('with hardware | t!help'))
         print("We have logged  in as {}".format(client))
-    
+
     @client.event
     async def on_message(message):
        # print('made it to on_message') (for debug)
@@ -42,8 +42,30 @@ def main(argv):
 ##            await message.channel.send('poopybutt -nieko')
 
 
+
+
+    @bot.command()
+    async def join(ctx):
+        channel = ctx.author.voice.channel
+        await channel.connect()
+    @bot.command()
+    async def leave(ctx):
+        await ctx.voice_client.disconnect()
+
+
+
         random_quotes = []
-        
+
+        if message.content == 't!help':
+            info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
+            info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
+            info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
+            info.add_field(name=":thinking:`t!randomquotes`", value="random quotes, made by yours truly", inline=True)
+            info.add_field(name=":ab:`t!cvf y=mx+b`", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
+            info.add_field(name=":ping_pong:`t!ping`", value="would send the time it takes to run the code but it doeSNT WORK", inline=False)
+            info.set_footer(text='[sumbit ideas and issues](https://github.com/zTheroy/theroy-discord-bot/issues)')
+            await message.channel.send(embed=info)
+
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
             await message.channel.send(response)
@@ -72,7 +94,7 @@ def main(argv):
                 print(y)
             math_embed.add_field(name="oh my god its your math answer", value=math_output, inline=False)
             await message.channel.send(embed=math_embed)
-            
+
         if message.content == 't!inspiration':
             random_quote = Request('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', headers={'User-Agent': 'Mozilla/5.0'})
             page = urlopen(random_quote)
@@ -84,15 +106,7 @@ def main(argv):
             inspiration = inspiration[0]
             inspiration = inspiration[:-3]
             await message.channel.send(inspiration)
-        if message.content == 't!help':
-            info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
-            info.add_field(name="t!inspiration", value="makes you go :O", inline=False)
-            info.add_field(name="t!randommath", value="random math. adds numbers -45000-45000", inline=False)
-            info.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
-            info.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
-            info.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
-            info.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
-            await message.channel.send(embed=info)
+
 
 
         if message.content.startswith('t!cvf'):
@@ -119,7 +133,7 @@ def main(argv):
 
         if message.content.startswith('t!ping'):
             start = time.time()
-            latency = message.channel.created_at 
+            latency = message.channel.created_at
             end = time.time()
             execution_time = end - start
             #embedding execution time and latency under
@@ -127,21 +141,6 @@ def main(argv):
             ping_title.add_field(name="Execution Time", value=(f"{execution_time} seconds"), inline=False)
             ping_title.add_field(name="Latency", value=str(round(client.latency*1000))+" ms", inline=False)
             await message.channel.send(embed=ping_title)
-
-        if message.content.startswith('t!github'):
-            github_title = discord.Embed(title="Code for Bot",  description="Steal the code for this bot! (Programmed in python 3+)", color=0xd9cf14)
-            github_title.add_field(name="Github", value="https://github.com/zTheroy/theroy-discord-bot", inline=False)
-            await message.channel.send(embed=github_title)
-
-        if message.content.startswith('t!'):
-            info2 = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
-            info2.add_field(name="t!inspiration", value="makes you go :O", inline=False)
-            info2.add_field(name="t!randommath", value="random math. adds numbers -45000-45000", inline=False)
-            info2.add_field(name="t!randomquotes", value="random quotes, made by yours truly", inline=False)
-            info2.add_field(name="t!cvf y=mx+b", value="replace y=mx+b with numbers (Don't make y or x a number, and don't add spaces)", inline=False)
-            info2.add_field(name="t!github", value="visit my github and steal this bots code (python 3+)", inline=False)
-            info2.add_field(name="t!ping", value="would send the time it takes to run the code but it doeSNT WORK AND ITS 2AM AND I HAVENT SLEPT GOD", inline=False)
-            await message.channel.send(embed=info)
 
 
     client.run(TOKEN)
