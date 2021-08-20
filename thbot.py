@@ -51,15 +51,15 @@ def main(argv):
     #@bot.command()
         #async def leave(ctx):
         #await ctx.voice_client.disconnect()
-
-        @client.command()
+       if message.content == 't!kick {member}':
         @client.command.has_permissions(administrator=True)
         async def kick(ctx, member: discord.Member):
             await member.kick()
             await ctx.message.add_reaction(" ")
             await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
             await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
-
+        elif @client.command.has_permissions(administrator=False):
+            await message.channel.send('**You need to be an admin to use this command!**')
 
 
 
