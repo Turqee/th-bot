@@ -23,7 +23,7 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Game('with hardware | t!help'))
+        await client.change_presence(activity=discord.Game('with voice commands! (wip) | t!help'))
         print("We have logged  in as {}".format(client))
 
     @client.event
@@ -44,17 +44,25 @@ def main(argv):
 
 
 
-    @bot.command()
-    async def join(ctx):
-        channel = ctx.author.voice.channel
-        await channel.connect()
-    @bot.command()
-    async def leave(ctx):
-        await ctx.voice_client.disconnect()
+    #@bot.command()
+    #async def join(ctx):
+        #channel = ctx.author.voice.channel
+        #await channel.connect()
+    #@bot.command()
+        #async def leave(ctx):
+        #await ctx.voice_client.disconnect()
+
+        @client.command()
+        @client.command.has_permissions(administrator=True)
+        async def kick(ctx, member: discord.Member):
+            await member.kick()
+            await ctx.message.add_reaction(" ")
+            await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
+            await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
 
 
 
-        random_quotes = []
+
 
         if message.content == 't!help':
             info = discord.Embed(title="Commands list:",  description="All existing commands", color=0x28e038)
