@@ -23,7 +23,7 @@ def main(argv):
     @client.event
     async def on_ready():
       #  print('made it to client.event') (debug)
-        await client.change_presence(activity=discord.Game('with voice commands! (wip) | t!help'))
+        await client.change_presence(activity=discord.Game('with kick commands lmao | t!help'))
         print("We have logged  in as {}".format(client))
 
     @client.event
@@ -52,14 +52,17 @@ def main(argv):
         #async def leave(ctx):
         #await ctx.voice_client.disconnect()
 
-        @client.command()
-        @client.command.has_permissions(administrator=True)
-        async def kick(ctx, member: discord.Member):
-            await member.kick()
-            await ctx.message.add_reaction(" ")
-            await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
-            await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
-
+        if message.content == 't!kick {discord.Member}':
+            @client.command()
+            @client.command.has_permissions(administrator=True)
+            async def kick(ctx, member: discord.Member):
+                await member.kick()
+                await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
+                await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
+                #doing respond thing when you dont have admin
+##@client.command()
+##elif @client.command.has_permissions(administrator=False):
+    ##await message.channel.send("You need to be an admin to use this command")
 
 
 
@@ -76,6 +79,7 @@ def main(argv):
 
         if message.content == 't!randomquotes':
             response = random.choice(random_quotes)
+
             await message.channel.send(response)
         if message.content == 't!randommath':
             lst = ['+', '-', '*', '/']
