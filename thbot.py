@@ -53,7 +53,7 @@ def main(argv):
         #await ctx.voice_client.disconnect()
 
         if message.content == 't!check':
-            for member in guild.members:
+            for member in ctx.guild.members:
                 id = member.id
                 await message.channel.send(id)
         if message.content == 't!kick':
