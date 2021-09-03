@@ -52,7 +52,11 @@ def main(argv):
         #async def leave(ctx):
         #await ctx.voice_client.disconnect()
 
-        if message.content == 't!kick {discord.Member}':
+        if message.content == 't!check':
+            for member in guild.members:
+                id = member.id
+                await message.channel.send(id)
+        if message.content == 't!kick':
             @client.command()
             @client.command.has_permissions(administrator=True)
             async def kick(ctx, member: discord.Member):
