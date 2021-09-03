@@ -59,6 +59,8 @@ def main(argv):
                 await member.kick()
                 await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
                 await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
+        elif:
+            await message.channel.send("You need to be an admin to use this command!")
                 #doing respond thing when you dont have admin
 ##@client.command()
 ##elif @client.command.has_permissions(administrator=False):
