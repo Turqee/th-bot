@@ -1,142 +1,129 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
+html {
+height: 100%;
+}
+body {
+/* gradient thing */
+background-image: linear-gradient(#FFFFFF, rgb(0, 27, 115));
+}
+/* Style the tab buttons */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
 
-  body {
-    margin: 20px auto;
-    font-family: "Lato";
-    font-weight: 300;
-  }
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
 
-  form {
-    padding: 15px 25px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
 
-  form label {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+/* Style each tab content individually */
+#Dashboard {background-color:blue;}
+#Commands {background-color:black;}
+#Tetris {background-color:blue;}
+#Github {background-color:black;}
 
-  input {
-    font-family: "Lato";
-  }
+/*tetris mini game from  https://levelup.gitconnected.com/build-a-tetris-game-with-html-canvas-css-and-javascript-on-autocode-132c8346e60c*/
+body {
+  padding-top: 1em;
+  text-align: center;
+  background-size: cover;
+}
 
-  a {
-    color: #0000ff;
-    text-decoration: none;
-  }
+h2,
+h3,
+h4 {
+  font-family: "Press Start 2P", monospace;
+  color: white;
+}
+p {
+  font-family: "Press Start 2P", monospace;
+  line-height: 1.5;
+  color: white;
+  font-size: 15px;
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+#tetris {
+  border: solid 0.2em white;
+  background-color: black;
+}
+#score {
+  font-family: "Press Start 2P", monospace;
+  color: white;
+}
 
-  #wrapper,
-  #loginform {
-    margin: 0 auto;
-    padding-bottom: 25px;
-    background: #eee;
-    width: 600px;
-    max-width: 100%;
-    border: 2px solid #212121;
-    border-radius: 4px;
-  }
+#start {
+  background-color: blue;
+  color: white;
+  padding: 0.5em;
+  margin: 0px 0px 25px 0px;
+  font-family: "Press Start 2P", monospace;
+}
 
-  #loginform {
-    padding-top: 18px;
-    text-align: center;
-  }
+#reset {
+  background-color: red;
+  color: white;
+  padding: 0.5em;
+  margin: 0px 0px 25px 0px;
+  font-family: "Press Start 2P", monospace;
+}
 
-  #loginform p {
-    padding: 15px 25px;
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
+#instructions {
+  background-color: purple;
+  color: white;
+  padding: 0.5em;
+  margin: 0px 0px 25px 0px;
+  font-family: "Press Start 2P", monospace;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white; /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 
-  #chatbox {
-    text-align: left;
-    margin: 0 auto;
-    margin-bottom: 25px;
-    padding: 10px;
-    background: #fff;
-    height: 300px;
-    width: 530px;
-    border: 1px solid #a7a7a7;
-    overflow: auto;
-    border-radius: 4px;
-    border-bottom: 4px solid #a7a7a7;
-  }
+/* Modal Content */
+.modal-content {
+  background-color: black;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
 
-  #usermsg {
-    flex: 1;
-    border-radius: 4px;
-    border: 1px solid #ff9800;
-  }
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-  #name {
-    border-radius: 4px;
-    border: 1px solid #ff9800;
-    padding: 2px 8px;
-  }
-
-  #submitmsg,
-  #enter{
-    background: #ff9800;
-    border: 2px solid #e65100;
-    color: white;
-    padding: 4px 10px;
-    font-weight: bold;
-    border-radius: 4px;
-  }
-
-  .error {
-    color: #ff0000;
-  }
-
-  #menu {
-    padding: 15px 25px;
-    display: flex;
-  }
-
-  #menu p.welcome {
-    flex: 1;
-  }
-
-  a#exit {
-    color: white;
-    background: #c62828;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  .msgln {
-    margin: 0 0 5px 0;
-  }
-   
-  .msgln span.left-info {
-    color: orangered;
-  }
-
-  .msgln span.chat-time {
-    color: #666;
-    font-size: 60%;
-    vertical-align: super;
-  }
-
-  .msgln b.user-name, .msgln b.user-name-left {
-    font-weight: bold;
-    background: #546e7a;
-    color: white;
-    padding: 2px 4px;
-    font-size: 90%;
-    border-radius: 4px;
-    margin: 0 5px 0 0;
-  }
-
-  .msgln b.user-name-left {
-    background: orangered;
-  }
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -39,11 +39,21 @@ def main(argv):
 ##            print(player)
 ##            await message.channel.send('Discord, yes or no?')
 ##            msg = await client.wait_for('message', check = check, timeout=60)
-##            await message.channel.send('poopybutt -nieko')
+##            await message.channel.send('poopybutt -d')
 
 
 
 
+
+        @bot.command()
+        @commands.has_role('Moderators')
+        async def kick(ctx,member:discord.Member,*,reason=None):
+            await member.kick(reason=reason)
+#A Ban is pretty much the same
+        @client.command()
+        @commands.has_role('Moderators')
+        async def ban(ctx,member:discord.Member,*,reason=None):
+            await member.ban(reason=reason)
     #@bot.command()
     #async def join(ctx):
         #channel = ctx.author.voice.channel
@@ -52,17 +62,16 @@ def main(argv):
         #async def leave(ctx):
         #await ctx.voice_client.disconnect()
 
-        if message.content == 't!check':
-            for member in ctx.guild.members:
-                id = member.id
-                await message.channel.send(id)
-        if message.content == 't!kick':
-            @client.command()
-            @client.command.has_permissions(administrator=True)
-            async def kick(ctx, member: discord.Member):
-                await member.kick()
-                await ctx.send(f"{member.name} has been kicked by {ctx.author.name}!")
-                await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
+    #    if message.content == 't!check':
+        #    for member in ctx.guild.members:
+        #        id = member.id
+            #    await message.channel.send(id)
+
+    #    if message.content == 't!kick {discord.User}':
+            #@client.command()
+        #    @client.command.has_permissions(administrator=True)
+            #async def kick(ctx, member: discord.Member):
+                #await log_channel.send(f"{ctx.author.name} has kicked {member.display_name}")
                 #doing respond thing when you dont have admin
 ##@client.command()
 ##elif @client.command.has_permissions(administrator=False):
