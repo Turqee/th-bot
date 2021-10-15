@@ -1,4 +1,10 @@
-
+html {
+height: 100%;
+}
+body {
+/* gradient thing */
+background-image: linear-gradient(#FFFFFF, rgb(0, 27, 115));
+}
 /* Montserrat Font */
 .font-montserrat {
   font-family: 'Montserrat', sans-serif;
