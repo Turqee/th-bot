@@ -1,95 +1,250 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- why are you in here there are much better websites to steal code from -->
 
 <head>
-  <title>ThBot - The best worst discord bot</title>
-  <!--website icon thing !DONT FORGET TO UPLOAD TO EXTERNAL SITE LATER! -->
-    <link rel="shortcut icon" type="image" href="theroy-discord-bot/images/botLogo.png">
-    <!-- font thing but it doesnt work :OOOO -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+
+
+
+
+
+
+  <title>ThBot - The best worst discord bot ever</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+        font-size: 12px;
+        color: white;
+        background-color: black;
+        font-family: monospace;
+    }
+    a {
+        color: #5cf442;
+        text-decoration: none;
+    }
+    @media screen and (min-width: 500px) {
+    body {
+        font-size: 16px;
+    }
+    }
+
+    @media screen and (min-width: 700px) {
+    body {
+        font-size: 18px;
+    }
+    }
+
+    @media screen and (min-width: 900px) {
+    body {
+        font-size: 20px;
+    }
+    }
+  </style>
+  <style>
+    @font-face {
+      font-family:"TopazPlus";
+      src: url(topazplus120010.ttf);
+    }
+    .center {
+      margin: auto;
+      width: 70%;
+
+    }
+    body {
+      color: #DDDDDD;
+      /* color: #c5c8c6; */
+      /*background-color: #0d0d18;*/
+      background-color: black;
+    }
+    pre {
+      font-family:"TopazPlus", "Lucida Console", monospace, Monaco;
+    }
+    a {
+      color: #54d7f9;
+      text-decoration: none;
+    }
+
+    line1 {
+      color: #bc0743
+    }
+    line2 {
+      color: #bb005e
+    }
+    line3 {
+      color: #b21679
+    }
+    line4 {
+      color: #a12c92
+    }
+    line5 {
+      color: #873fa8
+    }
+    line6 {
+      color: #624eba
+    }
+    line7 {
+      color: #145bc5
+    }
+
+
+
+    ik {
+      color: #20C20E;
+    }
+    y {
+      color: #f0c674;
+    }
+    gr {
+      color: #b5bd68;
+    }
+    r {
+      color: #9e0034;
+    }
+    w {
+      color: #ffffff;
+    }
+    pink {
+      color: #f4b6e5;
+    }
+    bb {
+      color: #5cc2ca; /* baby blue */
+    }
+    purp {
+      color: #0000ff;
+    }
+    l {
+      color: #c5c8c6;
+    }
+    lg {
+      color: #9de9a9;
+    }
+    sea {
+      color: #93ff4c;
+    }
+    red {
+    color: #dc143c;
+
+    }
+    red:hover {
+    color: #20C20E;
+    }
+
+/*buttons*/
+
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+  </style>
 </head>
 
 
-<body style="background-color:#3A3B3C">
 
-  <!-- funny buttons-->
-<div id="Tetris" class="tabcontent">
-  <h1>Tetris</h1>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tetris Challenge</title>
-  </head>
-  <title id>Tetris Challenge</title>
 
-  <body>
-    <h2>yoinked this from <a href="https://levelup.gitconnected.com/build-a-tetris-game-with-html-canvas-css-and-javascript-on-autocode-132c8346e60c" target="_blank">here</a></h2>
-    <h4 id="status">Play The Game</h2>
-      <button id="instructions">Instructions</button>
-      <!--Button for instructions -->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>⬅️ Left Arrow: moves the block left<br><br> ➡️ Right Arrow: moves the
-            block right<br><br>
-            ⬇️ Down Arrow: Accelerates the block's fall<br><br>
-            A & D Keys: Rotate the block <br><br> Score as many points as possible
-            by clearing horizontal lines of Blocks. <br><br> You must rotate,
-            move, and drop the falling Tetriminos inside the playing field. <br><br>
-            Lines are cleared when they are filled with Blocks and have no empty
-            spaces.
-          </p>
-        </div>
-      </div>
-      <div id="button-container">
-        <button id="start">Start</button>
-        <h3>Score:<span id="score">0</span></h3>
-        <button id="reset">Reset</button>
-      </div>
-      <canvas id="tetris" width="240" height="400">
-        <script src="tetris.js"></script>
 
+
+<body>
+    <!--buttons and header color-->
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li style="float:right"><a href="#about">About</a></li>
+    </ul>
+<pre style="text-align:center;">
+    <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
+    <line2>       :+:     :+:    :+:          :+:    :+: :+:    :+:    :+:      </line2>
+    <line3>      +:+     +:+    +:+          +:+    +:+ +:+    +:+    +:+       </line3>
+    <line4>     +#+     +#++:++#++          +#++:++#+  +#+    +:+    +#+        </line4>
+    <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
+    <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
+    <line7>  ###     ###    ###          #########   ########     ###           </line7>
+<pre>
+<hr>
+
+
+
+
+
+
+<hr>
+<div id="UC" class="tabcontent">
+  <div class="grid">
+  </div>
+  <p>soon™</p>
 </div>
 
 <div id="Github" class="tabcontent">
-  <p style="color:white">Submit bugs, or reccomend things on my <a style="color:white" href="https://github.com/Therqy/th-bot/issues">Github!</a></p>
+  <h1>Github</h1>
+  <p>Submit bugs, or reccomend things on my <a  href="https://github.com/Therqy/th-bot/issues">Github!</a></p>
 </div>
 
-<button class="tablink" onclick="openTab('Dashboard', this, 'grey')" id="defaultOpen">Dashboard</button>
-<button class="tablink" onclick="openTab('Commands', this, 'white')">Commands</button>
-<button class="tablink" onclick="openTab('Tetris', this, 'grey')">Tetris</button>
-<button class="tablink" onclick="openTab('Github', this, 'white)">Github</button>
 
 <div id="Dashboard" class="tabcontent">
-  <h1 style="text-align:center;">Dashboard</h1>
-   <p style="text-align:center;"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Add ThBot!</a></p>
+    <h1>Dashboard</h1>
+    <p  >Add my bot <a href="">please :)</a></p>
+  <div>
+    <img src="images/inspire.png" width=90px>
+    <p>Inspirational quotes that make you go 🤩</p>
+  </div>
+<div>
+<img src="images/math.png" width=90px>
+<p>Random math with integers that range from -45,000, to 45,000.<p>
 </div>
+  </div>
 
 <div id="Commands" class="tabcontent">
   <h1>Commands</h1>
-  <table style="background-color:#33475b">
+  <table width=400px>
         <tr>
-            <th style="color:white">Command</th>
-            <th style="color:white">Usage</th>
-            <th style="color:white">Catagorey</th>
+            <th  >Command</th>
+            <th  >Usage</th>
+            <th  >Catagorey</th>
         </tr>
         <tr>
-            <td style="color:white"><i>t!help</i></td>
-    <td style="color:white">could be a help command</td>
-    <td style="color:white"><b>Info</b></td>
+            <td  ><i>t!help</i></td>
+    <td  >could be a help command</td>
+    <td  ><b>Info</b></td>
   </tr>
   <tr>
-    <td style="color:white"><i>t!inspiration</i></td>
-    <td style="color:white">inspirational quotes :O</td>
-    <td style="color:white"><b>Random</b></td>
+    <td  ><i>t!inspiration</i></td>
+    <td  >inspirational quotes :O</td>
+    <td  ><b>Random</b></td>
   </tr>
   <tr>
-    <td style="color:white"><i>t!randomquotes</i></td>
-    <td style="color:white">random quotes by me. reccomend them on my <a href="https://github.com/Therqy/th-bot/issues" style="color:white">github</a> </td>
-    <td style="color:white"><b>Random</b></td>
+    <td  ><i>t!randomquotes</i></td>
+    <td  >random quotes by me. reccomend them on my <a href="https://github.com/Therqy/th-bot/issues"  >github</a> </td>
+    <td  ><b>Random</b></td>
   </tr>
   </table>
 </div>
@@ -98,37 +253,6 @@
 
 
 
-<p style="font-size: 12px"> <p style="color:white"> ©Theroy, 2021. I'm bad at websites and did this from scratch so ;-;</p>
-<script type="text/javascript">
-
-<!--yoinked this cause i couldnt figure it out :/ -->
-  let mobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
-
-    if (mobile) {
-        $('#servers').css("max-width", "82%")
-        $('#serverlist').css("max-height", "75%")
-    }
-    <!-- button thingy -->
-    function openTab(tabName, elmnt, color) {
-      // Hide all elements with class="tabcontent" by default */
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-
-      tablinks = document.getElementsByClassName("tablink");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-      }
-
-      document.getElementById(tabName).style.display = "block";
-
-
-      elmnt.style.backgroundColor = color;
-    }
-
-    document.getElementById("defaultOpen").click();
-    </script>
+<p> ©Theroy, 2021. I'm bad at websites and did this from scratch so ;-;</p>
   </body>
 </html>
