@@ -6,9 +6,10 @@ body {
 background-image: linear-gradient(#FFFFFF, rgb(0, 27, 115));
 }
 /* Montserrat Font */
-.font-montserrat {
-  font-family: 'Montserrat', sans-serif;
+{
+font-family: 'Baloo Thambi 2', cursive;
 }
+
 
 /* Disables Selecting and Dragging */
 .noselect {
