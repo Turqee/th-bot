@@ -280,6 +280,16 @@ code {
 table, th, td {
   border:1px solid black;
 }
+
+body {
+  padding: 5px;
+  background-color: white;
+  color: grey;
+}
+.dark-mode {
+  background-color: #212121;
+  color: white;
+}
   </style>
 </head>
 
@@ -294,7 +304,9 @@ table, th, td {
       <li><a class="active" href="index.html">Dashboard</a></li>
       <li><a href="commands.html">Commands</a></li>
       <li><a href="games.html">Games</a></li>
-      <li style="float:right"><a href="github.html">Github</a></li>
+      <li><a href="github.html">Github</a></li>
+      <li><a href="">Discord</a></li>
+      <li style="float:right"><button onclick="darkMode()">Dark Mode</button></li>
     </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -334,5 +346,12 @@ table, th, td {
   </tr>
 </table>
 <footer style="text-align:center;">©Theroy, 2021. I'm bad at websites <a href="sad.html" style="color:white">;-;</a></footer>
+
+<script>
+function darkMode() {
+ var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
   </body>
 </html>
