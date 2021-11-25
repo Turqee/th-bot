@@ -46,12 +46,6 @@
       width: 70%;
 
     }
-    body {
-      color: #DDDDDD;
-      /* color: #c5c8c6; */
-      /*background-color: #0d0d18;*/
-      background-color: black;
-    }
     pre {
       font-family:"TopazPlus", "Lucida Console", monospace, Monaco;
     }
@@ -291,6 +285,15 @@ body {
 li{
     cursor: pointer;
 }
+
+#rcorners1 {
+  border-radius: 15px 50px 30px 5px;
+  background: #343434;
+  padding: 20px;
+  color: white;
+  min-height: 100px;
+  overflow: hidden;
+}
 </style>
 </head>
 
@@ -305,10 +308,9 @@ li{
     <li><a href="index.html">Dashboard</a></li>
     <li><a href="commands.html">Commands</a></li>
     <li><a href="github.html">Github</a></li>
-    <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
-    <li><a href="https://top.gg/bot/820435029129822298">Vote!</a></li>
     <li><a class="active" href="log.html">Blog/Changelog</a></li>
-    <li><a  style="text-align:right;" onclick="darkMode()">Dark Mode</a></li>
+    <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
+    <li><a style="text-align:right;" onclick="darkMode()">Dark Mode</a></li>
   </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -320,9 +322,42 @@ li{
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
 <pre>
 <hr>
+<p>I made this change log on 11/24/21, so I only put major updates from before that date</p>
+<hr>
 
+<div id=rcorners1>
+  <h2>Some progress made today - 11/24/21</h2>
+<li>Added a changelog feature (lets go)</li>
+<li>Made dark mode base on your system preference, so for example if you use light mode (my condolences), it automatically switches to light mode, and similar with dark mode</li>
+<li>Made the dark mode button not wonky on the header tab</li>
+<li>Removed The 'Vote!' and 'Games' button. I will probably add them back once I have content in them</li>
+</div>
 
+<div id=rcorners1>
+  <h2>theroy.tech revamped - 10/19/21</h2>
+    <p>i actually learned html5 and put it to use to make a website from somewhat scratch and add stuff like</p>
+      <li>a custom dashboard (woah)</li>
+      <li>a dark and light mode</li>
+      <li>other quality of life things</li>
+</div>
 
+<div id=rcorners1>
+  <h2>Java Switch - 10/13/21</h2>
+  <p>I switch ThBot to java for reasons I am too lazy to explain, but this is a plus as I can</p>
+      <li>make little minigames easier in java</li>
+      <li>have more references to use making updates much more consitent</li>
+      <li>other quality of life stuff in the future :DDD</li>
+</div>
+
+<div id=rcorners1>
+  <h2>Website Beta 1.0 - 5/10/21</h2>
+  <p>I make website for bot to add. I also used a tempalte cause I did not know html5</p>
+</div>
+
+<div id=rcorners1>
+  <h2>Beta 1.0 - 4/28/21</h2>
+  <p>ThBot is born at like 2am, it gets online and everything</p>
+</div>
 
 
 
@@ -330,7 +365,15 @@ li{
 function darkMode() {
  var element = document.body;
    element.classList.toggle("dark-mode");
-}
+ }
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (prefersDarkScheme.matches) {
+      document.body.classList.add("dark-mode");
+    }
+    else {
+      document.body.classList.remove("dark-mode");
+    }
 </script>
   </body>
 </html>

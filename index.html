@@ -305,9 +305,8 @@ li{
       <li><a class="active" href="index.html">Dashboard</a></li>
       <li><a href="commands.html">Commands</a></li>
       <li><a href="github.html">Github</a></li>
-      <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
-      <li><a href="https://top.gg/bot/820435029129822298">Vote!</a></li>
       <li><a href="log.html">Blog/Changelog</a></li>
+      <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
       <li style="text-align:right;"><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
 <pre style="text-align:center;">
@@ -346,10 +345,18 @@ li{
 <footer style="text-align:center;">©Theroy, 2021. I'm bad at websites <a href="sad.html" style="color:white">;-;</a></footer>
 
 <script>
- function darkMode() {
-  var element = document.body;
-    element.classList.toggle("dark-mode");
-}
+function darkMode() {
+ var element = document.body;
+   element.classList.toggle("dark-mode");
+ }
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (prefersDarkScheme.matches) {
+      document.body.classList.add("dark-mode");
+    }
+    else {
+      document.body.classList.remove("dark-mode");
+    }
 </script>
 
   </body>
