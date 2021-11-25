@@ -227,8 +227,8 @@ $colors: (
   close: #ff7f82,
   raise: #ffa260,
   up: #e4cb58,
-  slide: #8fc866,
-  offset: #19bc8b
+  slide: #fc866,
+  offset: #fbc8b
 );
 
 
@@ -286,6 +286,11 @@ body {
   background-color: #212121;
   color: white;
 }
+
+/*cursor thing*/
+li{
+    cursor: pointer;
+}
   </style>
 </head>
 
@@ -299,11 +304,11 @@ body {
     <ul>
       <li><a class="active" href="index.html">Dashboard</a></li>
       <li><a href="commands.html">Commands</a></li>
-      <li><a href="games.html">Games</a></li>
       <li><a href="github.html">Github</a></li>
       <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
       <li><a href="https://top.gg/bot/820435029129822298">Vote!</a></li>
-      <li style="float:right"><button onclick="darkMode()">Dark Mode</button></li>
+      <li><a href="log.html">Blog/Changelog</a></li>
+      <li style="text-align:right;"><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -317,6 +322,7 @@ body {
 <hr>
 
 <div class="buttons">
+  <p>invite the bot i guess</p>
     <button class="pulse"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Invite ThBot</a></button>
 </div>
 <hr>
