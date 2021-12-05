@@ -1,15 +1,28 @@
+<?php
+
+
+if($_POST["message"]) {
+
+
+mail("gdtheroy@gmail.com", "lol",
+
+
+$_POST["insert your message here"]. "From: an@email.address");
+
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
  <head>
     <title>hehe</title>
   </head>
   <body>
-      <form action="mailto:gdtheroy@gmail.com" method="POST" enctype=”multipart/form-data” name=”EmailForm” style=text-align:center>
-        <label for="username">Instagram Username/Email</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password</label><br>
-        <input type="text" id="password" name="password"><br><br>
-        <input style=text-align:center type="Submit" value="Submit">
-      </form>
+      <form method="post" action="subscriberform.php">
+        <textarea name="message"></textarea>
+        <input type="submit">
+        </form>
   </body>
 </html>
