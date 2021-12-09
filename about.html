@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- why are you in here there are much better websites to steal code from -->
@@ -287,6 +286,10 @@ body {
   color: white;
 }
 
+#box1 {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
 /*cursor thing*/
 li{
     cursor: pointer;
@@ -302,11 +305,11 @@ li{
 <body>
     <!--buttons and header color-->
     <ul>
-      <li><a class="active" href="index.html">Dashboard</a></li>
+      <li><a href="index.html">Dashboard</a></li>
       <li><a href="commands.html">Commands</a></li>
       <li><a href="github.html">Github</a></li>
       <li><a href="log.html">Blog/Changelog</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a class="active" href="about.html">About</a></li>
       <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
       <li style="text-align:right;" id=darkMode class="darkMode"><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
@@ -318,58 +321,31 @@ li{
     <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
     <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
-<pre>
-<hr>
-<div class="buttons">
-  <p>invite the bot i guess</p>
-    <button class="pulse"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Invite ThBot</a></button>
-</div>
 <hr>
 
-<h1><b>Cool things it does</b></h1>
-
-<img src="images/inspire.png" width=90px>
-    <p>Inspirational quotes that make you go 🤩</p>
+<div id="box1">
+  <h1><i>Yo!</i> I'm <b>Theroy!</b></h1>
+  <p>I'm a teenager who enjoys programming in his free time (none), skateboarding, chess, and sudoku aswell.
+    I like to rant a lot so if you waNT to see that, you should head over to <a href="log.html">the blogs/changelog</a>.
+    I learned to code in middle school, and slowly but surley became more involved in it. I beleive that this is a skill that
+    can be easy to learn with the right mindset. I also love reading, so scanning through code just for fun is also another reason
+    I got into programming. Well, thats all about me. If you need to find me contact me at [INSERT FUTURE BUISNESS EMAIL HERE] and if I
+    don't respond, I'm probably sleeping. Have a good day, afternoon, evening, or night!
+    </p>
   </div>
-<div>
-<!-- <img src="images/math.png" width=90px> -->
-<p>Random math with integers that range from -45,000, to 45,000.<p>
-</div>
-<div>
-<img src="images/exclamation.png" width=90px>
-  <p>ping commands that WAS supposed to show th etime it takes to respond to a command but it doesNT WORK AND
-  ITS BEEN 5 HOURS<p>
-</div>
-  </div>
+    <script type="text/javascript">
+    function darkMode() {
+     var element = document.body;
+       element.classList.toggle("dark-mode");
+     }
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-<footer style="text-align:center;">©Theroy, 2021. I'm bad at websites <a href="sad.html" style="color:white">;-;</a></footer>
-
-<script>
-function darkMode() {
- var element = document.body;
-   element.classList.toggle("dark-mode");
-
-   var btnContainer = document.getElementById("darkMode");
-
-   var btns = btnContainer.getElementsByClassName("dark-mode");
-
-   for (var i = 0; i < btns.length; i++) {
-     btns[i].addEventListener("click", function() {
-       var current = document.getElementsByClassName("active");
-       current[0].className = current[0].className.replace(" active", "");
-       this.className += " active";
-     });
-}
-   }
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (prefersDarkScheme.matches) {
-      document.body.classList.add("dark-mode");
-    }
-    else {
-      document.body.classList.remove("dark-mode");
-    }
-</script>
-
-  </body>
+        if (prefersDarkScheme.matches) {
+          document.body.classList.add("dark-mode");
+        }
+        else {
+          document.body.classList.remove("dark-mode");
+        }
+    </script>
+</body>
 </html>

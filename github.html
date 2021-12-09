@@ -306,6 +306,7 @@ li{
     <li><a href="commands.html">Commands</a></li>
     <li><a class="active" href="github.html">Github</a></li>
     <li><a href="log.html">Blog/Changelog</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
     <li style="text-align:right;"><a onclick="darkMode()">Dark Mode</a></li>
   </ul>
@@ -321,7 +322,6 @@ li{
 <hr>
 
 <p>Issues with the bot? Want me to add something? Let me know on my <button> <a href="https://github.com/Therqy/th-bot/issues">Github!</a></button></p>
-
 <hr>
 
 
@@ -340,6 +340,7 @@ if (prefersDarkScheme.matches) {
 else {
   document.body.classList.remove("dark-mode");
 }
+await octokit.request('GET /user/issues')
 </script>
   </body>
 </html>
