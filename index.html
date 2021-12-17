@@ -291,6 +291,8 @@ body {
 li{
     cursor: pointer;
 }
+
+
   </style>
 </head>
 
@@ -306,7 +308,6 @@ li{
       <li><a href="commands.html">Commands</a></li>
       <li><a href="github.html">Github</a></li>
       <li><a href="log.html">Blog/Changelog</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
       <li style="text-align:right;" id=darkMode class="darkMode"><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
@@ -325,14 +326,13 @@ li{
     <button class="pulse"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Invite ThBot</a></button>
 </div>
 <hr>
-
 <h1><b>Cool things it does</b></h1>
 
 <img src="images/inspire.png" width=90px>
     <p>Inspirational quotes that make you go 🤩</p>
   </div>
 <div>
-<!-- <img src="images/math.png" width=90px> -->
+<img src="images/math.png" width=90px>
 <p>Random math with integers that range from -45,000, to 45,000.<p>
 </div>
 <div>
@@ -352,12 +352,6 @@ function darkMode() {
    var btnContainer = document.getElementById("darkMode");
 
    var btns = btnContainer.getElementsByClassName("dark-mode");
-
-   for (var i = 0; i < btns.length; i++) {
-     btns[i].addEventListener("click", function() {
-       var current = document.getElementsByClassName("active");
-       current[0].className = current[0].className.replace(" active", "");
-       this.className += " active";
      });
 }
    }
