@@ -348,21 +348,16 @@ li{
 function darkMode() {
  var element = document.body;
    element.classList.toggle("dark-mode");
-
-   var btnContainer = document.getElementById("darkMode");
-
-   var btns = btnContainer.getElementsByClassName("dark-mode");
-     });
 }
-   }
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-    if (prefersDarkScheme.matches) {
-      document.body.classList.add("dark-mode");
-    }
-    else {
-      document.body.classList.remove("dark-mode");
-    }
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+if (prefersDarkScheme.matches) {
+  document.body.classList.add("dark-mode");
+}
+else {
+  document.body.classList.remove("dark-mode");
+}
 </script>
 
   </body>
