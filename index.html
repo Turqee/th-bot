@@ -132,7 +132,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #212121;
 }
 
 li {
@@ -160,122 +160,6 @@ li a:hover:not(.active) {
   background-color: #026641;
 }
 
-
-
-
-.fill:hover,
-.fill:focus {
-  box-shadow: inset 0 0 0 2em var(--hover);
-}
-
-
-.pulse:hover,
-.pulse:focus {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff,0);
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
-}
-
-
-.close:hover,
-.close:focus {
-  box-shadow:
-    inset -3.5em 0 0 0 var(--hover),
-    inset 3.5em 0 0 0 var(--hover);
-}
-
-
-.raise:hover,
-.raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-}
-
-
-.up:hover,
-.up:focus {
-  box-shadow: inset 0 -3.25em 0 0 var(--hover);
-}
-
-
-.slide:hover,
-.slide:focus {
-  box-shadow: inset 6.5em 0 0 0 var(--hover);
-}
-
-
-.offset {
-  box-shadow:
-    0.3em 0.3em 0 0 var(--color),
-    inset 0.3em 0.3em 0 0 var(--color);
-
-  &:hover,
-  &:focus {
-    box-shadow:
-      0 0 0 0 var(--hover),
-      inset 6em 3.5em 0 0 var(--hover);
-  }
-}
-
-
-$colors: (
-  fill: #a972cb,
-  pulse: #ef6eae,
-  close: #ff7f82,
-  raise: #ffa260,
-  up: #e4cb58,
-  slide: #fc866,
-  offset: #fbc8b
-);
-
-
-@each $button, $color in $colors {
-  .#{$button} {
-    --color: #{$color};
-    --hover: #{adjust-hue($color, 45deg)};
-  }
-}
-
-
-button {
-  color: var(--color);
-  transition: 0.25s;
-
-  &:hover,
-  &:focus {
-    border-color: var(--hover);
-    color: #fff;
-  }
-}
-
-
-body {
-  color: #fff;
-  background: hsl(227, 10%, 10%);
-
-
-
-}
-
-
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-}
-
-h1 { font-weight: 400; }
-
-code {
-  color: #e4cb58;
-  font: inherit;
-}
 /* Dark Mode */
 body {
   padding: 5px;
@@ -296,14 +180,6 @@ li{
   </style>
 </head>
 
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 <body>
     <!--buttons and header color-->
     <ul>
@@ -312,7 +188,7 @@ li{
       <li><a href="log.html">Blog/Changelog</a></li>
       <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
       <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
-      <li style="text-align:right;" id=darkMode class="darkMode"><a onclick="darkMode()">Dark Mode</a></li>
+      <li><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -322,7 +198,7 @@ li{
     <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
     <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
-    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"></p>
+    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"><i><b></b></i></p>
 
 <pre>
 <hr>
@@ -342,7 +218,7 @@ li{
 </div>
 <div>
 <img src="images/exclamation.png" width=90px>
-  <p>ping commands that WAS supposed to show th etime it takes to respond to a command but it doesNT WORK AND
+  <p>ping commands that WAS supposed to show the time it takes to respond to a command but it doesNT WORK AND
   ITS BEEN 5 HOURS<p>
 </div>
   </div>
@@ -353,18 +229,9 @@ li{
 function darkMode() {
  var element = document.body;
    element.classList.toggle("dark-mode");
-}
+ }
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-<<<<<<< Updated upstream
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-if (prefersDarkScheme.matches) {
-  document.body.classList.add("dark-mode");
-}
-else {
-  document.body.classList.remove("dark-mode");
-}
-=======
     if (prefersDarkScheme.matches) {
       document.body.classList.add("dark-mode");
     }
@@ -377,7 +244,6 @@ else {
     m = n.getMonth() + 1;
     d = n.getDate();
     document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
->>>>>>> Stashed changes
 </script>
 
   </body>

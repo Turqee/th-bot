@@ -126,7 +126,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #212121;
 }
 
 li {
@@ -151,132 +151,10 @@ li a:hover:not(.active) {
 }
 
 .active {
-<<<<<<< Updated upstream
-  background-color: #04AA6D;
-}
-
-
-
-
-.fill:hover,
-.fill:focus {
-  box-shadow: inset 0 0 0 2em var(--hover);
-}
-
-
-.pulse:hover,
-.pulse:focus {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff,0);
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
-}
-
-
-.close:hover,
-.close:focus {
-  box-shadow:
-    inset -3.5em 0 0 0 var(--hover),
-    inset 3.5em 0 0 0 var(--hover);
-}
-
-
-.raise:hover,
-.raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-}
-
-
-.up:hover,
-.up:focus {
-  box-shadow: inset 0 -3.25em 0 0 var(--hover);
-}
-
-
-.slide:hover,
-.slide:focus {
-  box-shadow: inset 6.5em 0 0 0 var(--hover);
-}
-
-
-.offset {
-  box-shadow:
-    0.3em 0.3em 0 0 var(--color),
-    inset 0.3em 0.3em 0 0 var(--color);
-
-  &:hover,
-  &:focus {
-    box-shadow:
-      0 0 0 0 var(--hover),
-      inset 6em 3.5em 0 0 var(--hover);
-  }
-}
-
-
-$colors: (
-  fill: #a972cb,
-  pulse: #ef6eae,
-  close: #ff7f82,
-  raise: #ffa260,
-  up: #e4cb58,
-  slide: #fc866,
-  offset: #fbc8b
-);
-
-
-@each $button, $color in $colors {
-  .#{$button} {
-    --color: #{$color};
-    --hover: #{adjust-hue($color, 45deg)};
-  }
-}
-
-
-button {
-  color: var(--color);
-  transition: 0.25s;
-
-  &:hover,
-  &:focus {
-    border-color: var(--hover);
-    color: #fff;
-  }
-}
-
-
-body {
-  color: #fff;
-  background: hsl(227, 10%, 10%);
-
-
-
-}
-
-
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-}
-
-h1 { font-weight: 400; }
-
-code {
-  color: #e4cb58;
-  font: inherit;
-}
-=======
   background-color: #510266;
 }
 
 
->>>>>>> Stashed changes
 /* Dark Mode */
 body {
   padding: 5px;
