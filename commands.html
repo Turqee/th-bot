@@ -157,6 +157,7 @@ li a:hover:not(.active) {
 }
 
 .active {
+<<<<<<< Updated upstream
   background-color: #04AA6D;
 }
 
@@ -276,6 +277,11 @@ code {
   color: #e4cb58;
   font: inherit;
 }
+=======
+  background-color: #140266;
+}
+
+>>>>>>> Stashed changes
 /* Dark Mode */
 body {
   padding: 5px;
@@ -285,6 +291,10 @@ body {
 .dark-mode {
   background-color: #212121;
   color: white;
+}
+
+.rounded {
+  border: 1px;
 }
 
 /*cursor thing*/
@@ -304,10 +314,10 @@ li{
   <ul>
     <li><a href="index.html">Dashboard</a></li>
     <li><a class="active" href="commands.html">Commands</a></li>
-    <li><a href="github.html">Github</a></li>
     <li><a href="log.html">Blog/Changelog</a></li>
+    <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
     <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
-    <li style="text-align:right;"><a onclick="darkMode()">Dark Mode</a></li>
+    <li><a onclick="darkMode()">Dark Mode</a></li>
   </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -317,6 +327,11 @@ li{
     <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
     <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
+    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"></p>
+<hr class="rounded">
+<h2>This page is under construction, heres a turtle.</h2>
+<marquee>🐢</marquee>
+    <!--
 <pre>
 <hr>
 <table style="width:100%">
@@ -346,7 +361,8 @@ li{
     <td>Misc</td>
   </tr>
 </table>
-<footer style="text-align:center;">©Theroy, 2021. I'm bad at websites <a href="sad.html" style="color:white">;-;</a></footer>
+-->
+<footer style="text-align:center;">©Theroy, 2021 <a href="sad.html" style="color:white">:)</a></footer>
 
 <script>
 function darkMode() {
@@ -361,6 +377,12 @@ if (prefersDarkScheme.matches) {
 else {
   document.body.classList.remove("dark-mode");
 }
+
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 </script>
   </body>
 </html>

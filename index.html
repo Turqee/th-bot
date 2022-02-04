@@ -157,7 +157,7 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #026641;
 }
 
 
@@ -296,18 +296,21 @@ li{
   </style>
 </head>
 
+<<<<<<< Updated upstream
 
 
 
 
 
+=======
+>>>>>>> Stashed changes
 <body>
     <!--buttons and header color-->
     <ul>
       <li><a class="active" href="index.html">Dashboard</a></li>
       <li><a href="commands.html">Commands</a></li>
-      <li><a href="github.html">Github</a></li>
       <li><a href="log.html">Blog/Changelog</a></li>
+      <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
       <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
       <li style="text-align:right;" id=darkMode class="darkMode"><a onclick="darkMode()">Dark Mode</a></li>
     </ul>
@@ -319,6 +322,8 @@ li{
     <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
     <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
+    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"></p>
+
 <pre>
 <hr>
 <div class="buttons">
@@ -342,7 +347,7 @@ li{
 </div>
   </div>
 
-<footer style="text-align:center;">©Theroy, 2021. I'm bad at websites <a href="sad.html" style="color:white">;-;</a></footer>
+  <footer style="text-align:center;">©Theroy, 2021 <a href="sad.html" style="color:white">:)</a></footer>
 
 <script>
 function darkMode() {
@@ -350,6 +355,7 @@ function darkMode() {
    element.classList.toggle("dark-mode");
 }
 
+<<<<<<< Updated upstream
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 if (prefersDarkScheme.matches) {
@@ -358,6 +364,20 @@ if (prefersDarkScheme.matches) {
 else {
   document.body.classList.remove("dark-mode");
 }
+=======
+    if (prefersDarkScheme.matches) {
+      document.body.classList.add("dark-mode");
+    }
+    else {
+      document.body.classList.remove("dark-mode");
+    }
+
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+>>>>>>> Stashed changes
 </script>
 
   </body>

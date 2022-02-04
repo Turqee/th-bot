@@ -151,6 +151,7 @@ li a:hover:not(.active) {
 }
 
 .active {
+<<<<<<< Updated upstream
   background-color: #04AA6D;
 }
 
@@ -270,6 +271,12 @@ code {
   color: #e4cb58;
   font: inherit;
 }
+=======
+  background-color: #510266;
+}
+
+
+>>>>>>> Stashed changes
 /* Dark Mode */
 body {
   padding: 5px;
@@ -287,12 +294,17 @@ li{
 }
 
 #rcorners1 {
+  cursor: default;
   border-radius: 15px 50px 30px 5px;
   background: #343434;
   padding: 20px;
   color: white;
   min-height: 100px;
   overflow: hidden;
+}
+
+.rounded {
+  border: 1px solid grey;
 }
 </style>
 </head>
@@ -307,10 +319,10 @@ li{
   <ul>
     <li><a href="index.html">Dashboard</a></li>
     <li><a href="commands.html">Commands</a></li>
-    <li><a href="github.html">Github</a></li>
     <li><a class="active" href="log.html">Blog/Changelog</a></li>
-    <li><a href="https://discord.com/invite/NcXkMY9PZy">Discord</a></li>
-    <li><a style="text-align:right;" onclick="darkMode()">Dark Mode</a></li>
+    <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
+    <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
+    <li><a onclick="darkMode()">Dark Mode</a></li>
   </ul>
 <pre style="text-align:center;">
     <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
@@ -320,6 +332,8 @@ li{
     <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
     <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
     <line7>  ###     ###    ###          #########   ########     ###           </line7>
+    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"></p>
+
 <pre>
 <hr>
 <p>I made this change log on 11/24/21, so I only put major updates from before that date</p>
@@ -364,6 +378,7 @@ li{
   <p>ThBot is born at like 2am, it gets online and everything</p>
 </div>
 
+<footer style="text-align:center;">©Theroy, 2021 <a href="sad.html" style="color:white">:)</a></footer>
 
 
 <script type="text/javascript">
@@ -379,6 +394,12 @@ function darkMode() {
     else {
       document.body.classList.remove("dark-mode");
     }
+
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 </script>
   </body>
 </html>
