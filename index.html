@@ -5,246 +5,56 @@
 
 <head>
   <title>ThBot - The best worst discord bot ever</title>
-  <link rel="icon" href="images/botLogo.png">
+  <link rel="icon" href="website shit/images/botLogo.png">
+  <link rel="stylesheet" href="website shit/css/styles.css">
   <meta charset="UTF-8">
-  <style>
-    body {
-        font-size: 12px;
-        color: white;
-        background-color: black;
-        font-family: monospace;
-    }
-    a {
-        color: #5cf442;
-        text-decoration: none;
-    }
-    @media screen and (min-width: 500px) {
-    body {
-        font-size: 16px;
-    }
-    }
-
-    @media screen and (min-width: 700px) {
-    body {
-        font-size: 18px;
-    }
-    }
-
-    @media screen and (min-width: 900px) {
-    body {
-        font-size: 20px;
-    }
-    }
-  </style>
-  <style>
-    @font-face {
-      font-family:"TopazPlus";
-      src: url(topazplus120010.ttf);
-    }
-    .center {
-      margin: auto;
-      width: 70%;
-
-    }
-    body {
-      color: #DDDDDD;
-      /* color: #c5c8c6; */
-      /*background-color: #0d0d18;*/
-      background-color: black;
-    }
-    pre {
-      font-family:"TopazPlus", "Lucida Console", monospace, Monaco;
-    }
-    a {
-      color: #54d7f9;
-      text-decoration: none;
-    }
-
-    line1 {
-      color: #bc0743
-    }
-    line2 {
-      color: #bb005e
-    }
-    line3 {
-      color: #b21679
-    }
-    line4 {
-      color: #a12c92
-    }
-    line5 {
-      color: #873fa8
-    }
-    line6 {
-      color: #624eba
-    }
-    line7 {
-      color: #145bc5
-    }
-
-
-
-    ik {
-      color: #20C20E;
-    }
-    y {
-      color: #f0c674;
-    }
-    gr {
-      color: #b5bd68;
-    }
-    r {
-      color: #9e0034;
-    }
-    w {
-      color: #ffffff;
-    }
-    pink {
-      color: #f4b6e5;
-    }
-    bb {
-      color: #5cc2ca; /* baby blue */
-    }
-    purp {
-      color: #0000ff;
-    }
-    l {
-      color: #c5c8c6;
-    }
-    lg {
-      color: #9de9a9;
-    }
-    sea {
-      color: #93ff4c;
-    }
-    red {
-    color: #dc143c;
-
-    }
-    red:hover {
-    color: #20C20E;
-    }
-
-/*buttons*/
-
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #212121;
-}
-
-li {
-  float: left;
-  border-right:1px solid #bbb;
-}
-
-li:last-child {
-  border-right: none;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #026641;
-}
-
-/* Dark Mode */
-body {
-  padding: 5px;
-  background-color: white;
-  color: grey;
-}
-.dark-mode {
-  background-color: #212121;
-  color: white;
-}
-
-/*cursor thing*/
-li{
-    cursor: pointer;
-}
-
-
-  </style>
 </head>
 
 <body>
-    <!--buttons and header color-->
-    <ul>
-      <li><a class="active" href="index.html">Dashboard</a></li>
-      <li><a href="commands.html">Commands</a></li>
-      <li><a href="log.html">Blog/Changelog</a></li>
-      <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
-      <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
-      <li><a onclick="darkMode()">Dark Mode</a></li>
-    </ul>
-<pre style="text-align:center;">
-    <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
-    <line2>       :+:     :+:    :+:          :+:    :+: :+:    :+:    :+:      </line2>
-    <line3>      +:+     +:+    +:+          +:+    +:+ +:+    +:+    +:+       </line3>
-    <line4>     +#+     +#++:++#++          +#++:++#+  +#+    +:+    +#+        </line4>
-    <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
-    <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
-    <line7>  ###     ###    ###          #########   ########     ###           </line7>
-    <p style="border:3px; border-style:solid; padding: 1em; width:90px; margin: auto;" id="date"><i><b></b></i></p>
+        <!--buttons and header color-->
+        <ul>
+          <li><a class="active" href="index.html">Dashboard</a></li>
+          <li><a href="commands.html">Commands</a></li>
+          <li><a href="log.html">Blog/Changelog</a></li>
+          <li><a href="https://github.com/Therqy/th-bot/issues" target="_blank">Github</a></li>
+          <li><a href="https://discord.com/invite/NcXkMY9PZy" target="_blank">Discord</a></li>
+          <li><a onclick="darkMode()">Dark Mode</a></li>
+        </ul>
+    <pre style="text-align:center;">
+        <line1>    ::::::::::: :::    :::          :::::::::   :::::::: ::::::::::: </line1>
+        <line2>       :+:     :+:    :+:          :+:    :+: :+:    :+:    :+:      </line2>
+        <line3>      +:+     +:+    +:+          +:+    +:+ +:+    +:+    +:+       </line3>
+        <line4>     +#+     +#++:++#++          +#++:++#+  +#+    +:+    +#+        </line4>
+        <line5>    +#+     +#+    +#+          +#+    +#+ +#+    +#+    +#+         </line5>
+        <line6>   #+#     #+#    #+#          #+#    #+# #+#    #+#    #+#          </line6>
+        <line7>  ###     ###    ###          #########   ########     ###           </line7>
+    <p style="border:3px; border-style:solid; padding:1em; width:95px; margin: auto;" id="date"></p>
 
-<pre>
-<hr>
-<div class="buttons">
-  <p>invite the bot i guess</p>
-    <button class="pulse"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Invite ThBot</a></button>
-</div>
-<hr>
-<h1><b>Cool things it does</b></h1>
+    <pre>
+    <hr>
+      <p>invite the bot, if you want</p>
+        <button class="btn"><a href="https://discord.com/api/oauth2/authorize?client_id=820435029129822298&permissions=8&scope=bot" target="_blank">Invite ThBot</a></button>
+    <hr>
+    <h1><b>Cool things it does</b></h1>
+        <div>
+    <img src="website shit/images/inspire.png" width=90px>
+        <p>Inspirational quotes that make you go 🤩</p>
+      </div>
+      <hr>
+    <div>
+    <img src="website shit/images/math.png" width=90px>
+    <p>Random math with integers that range from -45,000, to 45,000.<p>
+    </div>
+    <hr>
+    <div>
+    <img src="website shit/images/exclamation.png" width=90px>
+      <p>ping commands that WAS supposed to show the time it takes to respond to a command but it doesNT WORK AND
+      ITS BEEN 5 HOURS<p>
+    </div>
+    <hr>
+      </div>
 
-<img src="images/inspire.png" width=90px>
-    <p>Inspirational quotes that make you go 🤩</p>
-  </div>
-<div>
-<img src="images/math.png" width=90px>
-<p>Random math with integers that range from -45,000, to 45,000.<p>
-</div>
-<div>
-<img src="images/exclamation.png" width=90px>
-  <p>ping commands that WAS supposed to show the time it takes to respond to a command but it doesNT WORK AND
-  ITS BEEN 5 HOURS<p>
-</div>
-  </div>
-
-  <footer style="text-align:center;">©Theroy, 2021 <a href="sad.html" style="color:white">:)</a></footer>
-
-<script>
-function darkMode() {
- var element = document.body;
-   element.classList.toggle("dark-mode");
- }
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (prefersDarkScheme.matches) {
-      document.body.classList.add("dark-mode");
-    }
-    else {
-      document.body.classList.remove("dark-mode");
-    }
-
-    n =  new Date();
-    y = n.getFullYear();
-    m = n.getMonth() + 1;
-    d = n.getDate();
-    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
-</script>
-
+      <footer style="text-align:center;">©Theroy, 2021 <a href="sad.html" style="color:white">:)</a></footer>
+        <script src="website shit/javascript/main.js"></script>
   </body>
 </html>

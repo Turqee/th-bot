@@ -156,6 +156,10 @@ def main(argv):
             await message.channel.send(cvf_answer)
 
 
+        if message.content.startswith('everyone'):
+                for x in '@everyone':
+            await message.channel.send(x)
+
         if message.content.startswith('t!ping'):
             start = time.time()
             latency = message.channel.created_at

@@ -1,0 +1,190 @@
+body {
+    font-size: 12px;
+    color: white;
+    background-color: black;
+    font-family: monospace;
+}
+a {
+    color: #5cf442;
+    text-decoration: none;
+}
+@media screen and (min-width: 500px) {
+body {
+    font-size: 16px;
+}
+}
+
+@media screen and (min-width: 700px) {
+body {
+    font-size: 18px;
+}
+}
+
+@media screen and (min-width: 900px) {
+body {
+    font-size: 20px;
+ }
+}
+@font-face {
+  font-family:"TopazPlus";
+  src: url(topazplus120010.ttf);
+}
+.center {
+  margin: auto;
+  width: 70%;
+
+}
+body {
+  color: #DDDDDD;
+  /* color: #c5c8c6; */
+  /*background-color: #0d0d18;*/
+  background-color: black;
+}
+pre {
+  font-family:"TopazPlus", "Lucida Console", monospace, Monaco;
+}
+a {
+  color: #54d7f9;
+  text-decoration: none;
+}
+
+line1 {
+  color: #bc0743
+}
+line2 {
+  color: #bb005e
+}
+line3 {
+  color: #b21679
+}
+line4 {
+  color: #a12c92
+}
+line5 {
+  color: #873fa8
+}
+line6 {
+  color: #624eba
+}
+line7 {
+  color: #145bc5
+}
+
+
+
+ik {
+  color: #20C20E;
+}
+y {
+  color: #f0c674;
+}
+gr {
+  color: #b5bd68;
+}
+r {
+  color: #9e0034;
+}
+w {
+  color: #ffffff;
+}
+pink {
+  color: #f4b6e5;
+}
+bb {
+  color: #5cc2ca; /* baby blue */
+}
+purp {
+  color: #0000ff;
+}
+l {
+  color: #c5c8c6;
+}
+lg {
+  color: #9de9a9;
+}
+sea {
+  color: #93ff4c;
+}
+red {
+color: #dc143c;
+
+}
+red:hover {
+color: #20C20E;
+}
+
+/*buttons*/
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #212121;
+}
+
+li {
+float: left;
+border-right:1px solid #bbb;
+}
+
+li:last-child {
+border-right: none;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+li a:hover:not(.active) {
+background-color: #111;
+}
+
+.active {
+background-color: #026641;
+}
+
+/* Dark Mode */
+body {
+padding: 5px;
+background-color: white;
+color: grey;
+}
+.dark-mode {
+background-color: #212121;
+color: white;
+}
+
+/*cursor thing*/
+li{
+cursor: pointer;
+}
+
+.btn {
+  background-color: #2B2D2F;
+  color: #71DFBE
+  border: none;
+  border-radius: 125em;
+  padding: 1em 3em;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: none;
+}
+#rcorners1 {
+    cursor: default;
+    border-radius: 50px 50px 50px 5px;
+    background: #343434;
+    padding: 20px;
+    color: white;
+    min-height: 100px;
+    overflow: hidden;
+  }
+
+  .rounded {
+    border: 1px solid grey;
+  }
+}
