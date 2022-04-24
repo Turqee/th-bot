@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 from discord.ext.commands import Bot
 from discord.ext import commands
+from mcstatus import MinecraftServer
 
 
 load_dotenv()
@@ -15,7 +16,7 @@ def main(argv):
 
     bot = commands.Bot(command_prefix="t!")
 
-    TOKEN = sys.argv[1]
+    TOKEN = 'ODIwNDM1MDI5MTI5ODIyMjk4.YE1HqQ.0Vb-fPc_-QxXMX2dwvGqVfuUDTM'
 
     print(TOKEN)
   #  print('please error') (debug)
@@ -40,20 +41,6 @@ def main(argv):
 ##            await message.channel.send('Discord, yes or no?')
 ##            msg = await client.wait_for('message', check = check, timeout=60)
 ##            await message.channel.send('poopybutt -d')
-
-
-
-
-
-        @bot.command()
-        @commands.has_role('Moderators')
-        async def kick(ctx,member:discord.Member,*,reason=None):
-            await member.kick(reason=reason)
-#A Ban is pretty much the same
-        @client.command()
-        @commands.has_role('Moderators')
-        async def ban(ctx,member:discord.Member,*,reason=None):
-            await member.ban(reason=reason)
     #@bot.command()
     #async def join(ctx):
         #channel = ctx.author.voice.channel
@@ -156,9 +143,7 @@ def main(argv):
             await message.channel.send(cvf_answer)
 
 
-        if message.content.startswith('everyone'):
-                for x in '@everyone':
-            await message.channel.send(x)
+
 
         if message.content.startswith('t!ping'):
             start = time.time()
@@ -171,6 +156,23 @@ def main(argv):
             ping_title.add_field(name="Latency", value=str(round(client.latency*1000))+" ms", inline=False)
             await message.channel.send(embed=ping_title)
 
+
+
+            server = MinecraftServer.lookup("73.72.30.138:5000")
+
+            # 'status' is supported by all Minecraft servers that are version 1.7 or higher.
+            status = server.status()
+            print(f"The server has {status.players.online} players and replied in {status.latency} ms")
+
+            # 'ping' is supported by all Minecraft servers that are version 1.7 or higher.
+            # It is included in a 'status' call, but is also exposed separate if you do not require the additional info.
+            latency = server.ping()
+            print(f"The server replied in {latency} ms")
+
+            # 'query' has to be enabled in a servers' server.properties file!
+            # It may give more information than a ping, such as a full player list or mod information.
+            query = server.query()
+            print(f"The server has the following players online: {', '.join(query.players.names)}")
 
     client.run(TOKEN)
 if __name__ == "__main__":
