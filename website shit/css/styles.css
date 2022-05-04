@@ -148,17 +148,6 @@ background-color: #111;
 background-color: #026641;
 }
 
-/* Dark Mode */
-body {
-padding: 5px;
-background-color: white;
-color: grey;
-}
-.dark-mode {
-background-color: #212121;
-color: white;
-}
-
 /*cursor thing*/
 li{
 cursor: pointer;
@@ -210,6 +199,7 @@ button {
 button:hover {
     color: #001F3F;
     background-color: #fff;
+    cursor: pointer;
 }
 
 /* Dashed border */
@@ -231,4 +221,31 @@ hr.solid {
 hr.rounded {
   border-top: 8px solid #bbb;
   border-radius: 5px;
+}
+
+/* dark mode */
+body.dark-theme {
+  --text-color: #eee;
+  --bkg-color: #121212;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body {
+    --text-color: #eee;
+    --bkg-color: #121212;
+  }
+  body.light-theme {
+    --text-color: #222;
+    --bkg-color: #fff;
+  }
+}
+
+body {
+  background: var(--bkg-color);
+}
+
+h1,
+p {
+  color: var(--text-color);
 }
