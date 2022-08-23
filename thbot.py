@@ -12,6 +12,8 @@ from discord.ext import commands
 # from discord_ui import Button
  
 def main(argv):
+
+    
     intents=discord.Intents.all()
     intents.members = True
     #intents.message_content = True
@@ -24,7 +26,7 @@ def main(argv):
     if len(argv) < 1:
         try:
             load_dotenv()
-            token = os.getenv()
+            token = os.getenv('TOKEN')
         except:
             raise Exception(".env file not present please check .env or pass token via the command line")
     elif len(argv[0]) > 0:
@@ -40,7 +42,7 @@ def main(argv):
 
     @bot.event
     async def on_ready():
-        status=["wit dey worm", "with twitch source code", "Skate 3", "theroy.tech", "im here for cs club", "with finkey 🥺", "clash royale", "with java" ]
+        status=["wit dey worm", "with twitch source code", "Skate 3", "theroy.tech", "im here for cs club", "with finkey 🥺", "clash royale", "with java", "with theroy's head", "Minecraft - 20 Years Elapsed", "gorillaz spotify", "Google Chrome", "Dead Cells", "Fortnite (<--- FUNNY JOKE)" ]
         rstatus = random.choice(status)
         print("bot loading complete")
         await bot.change_presence(activity=discord.Game( rstatus +' | t!help in ' + str(len(bot.guilds)) + ' servers.'), status=discord.Status.idle)
@@ -126,7 +128,7 @@ def main(argv):
     async def ping(ctx, *, message=None):
         'ping command to pong the ping'
         start = time.time()
-        latency = message.channel.created_at
+        latency = ctx.channel.created_at
         end = time.time()
         execution_time = end - start
         #embedding execution time and latency under
@@ -139,47 +141,53 @@ def main(argv):
     #require global vars username gname etc.
     @bot.command()
     async def userinfo(ctx, user:discord.Member= None, *, message=None):
-        #print(user)
+        #print(user)\\
         #print(ctx.message.author.avatar.url)
         if user != None:
-            create = user.created_at
-            is_bot = user.bot
+            ouser = ctx.user
+            
             info = discord.Embed(title="",  description="", color=0x481c70)
-            info.set_author(name=str(user), icon_url=user.avatar.url)
-            info.add_field(name="User ID :performing_arts:", value="*" + str(user.id) + "*")
-            info.add_field(name="Username :name_badge:", value="*" + str(user).split('#')[0] + "*",  inline=False)
-            info.add_field(name="Bot :robot:", value="*" + str(is_bot) + "*")
-            info.add_field(name="Discriminator :hash:", value="*" + ctx.author.discriminator + "*", inline=False)
-            info.set_footer(text="Profile creation: " + create.strftime("%Y-%m-%d, %H:%M:%S"))
+            info.set_author(name=str(user), icon_url=user.avatar_url)
+            info.add_field(name=":id:User ID", value="*" + str(user.id) + "*")
+            info.add_field(name=":name_badge:Username", value="*" + str(user).split('#')[0] + "*",  inline=False)
+            info.add_field(name=":robot:Bot", value="*" + str(ctx.user.bot) + "*")
+            info.add_field(name="Discriminator :hash:", value="*" + str(user).split('#')[1] + "*", inline=False)
+            info.set_footer(text="Profile creation: " + ctx.user.created_at.strftime("%Y-%m-%d, %H:%M:%S"))
             await ctx.reply(embed=info, mention_author = False)
         else:
-            await ctx.reply("User not entered or found", mention_author=True)
+            await ctx.reply("Please mention a user!", mention_author=True)
 
 
 
         #---------Server Information Command---------#
     @bot.command()
-    async def serverinfo(message):
+    async def serverinfo(ctx):
         server = discord.Embed(title="", description="", color=0x3c8009)
-        server.set_author(name=gname, icon_url=gavatar)
-        server.add_field(name="Owner :judge:", value=owner, inline=True)
-        server.add_field(name="2FA Required " + gemoji , value=str(gmfa), inline=True)
-        server.add_field(name="Channels :speech_balloon:", value=gchannels, inline=True)
-        server.add_field(name="Emojis " + remojilist, value=str(len(emoji)), inline=True)
-        server.add_field(name="Members " + memoji, value=str(members), inline=True)
-        server.set_footer(text="ID: " + str(gid) + " | Server Creation: " + gcreate.strftime("%Y-%m-%d %H:%M:%S"))
+        server.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon_url)
+        server.add_field(name="Owner :judge:", value=ctx.guild.owner, inline=True)
+        # server.add_field(name="2FA Required ", value=str(gmfa), inline=True)
+        server.add_field(name="Channels :speech_balloon:", value=str(len(ctx.guild.text_channels)), inline=True)
+        server.add_field(name="Emojis ", value=str(len(ctx.guild.emojis)), inline=True)
+        server.add_field(name="Members ", value=str(len(ctx.guild.members)), inline=True)
+        server.set_footer(text="ID: " + str(ctx.guild.id) + " | Server Creation: " + ctx.guild.created_at.strftime("%Y-%m-%d %H:%M:%S"))
         await ctx.send(embed=server)
-
-        #---------Spotify Command LOL!---------#
+        
     @bot.command()
-    async def spotify(ctx, user:discord.Member, *, message=None):
-        spit = discord.Embed(title="", value="", color=0x189bcc)
-        spit.set_author(name=str(user) + "#" + disc, icon_url=avatar)
-        spit.add_field(name="Album", value=album, inline=True)
-        spit.add_field(name="Duration", value=stime, inline=True)
-        spit.add_field(name="Artist", value=str(art), inline=True)
-        spit.set_footer(text="Track ID: " + str(sid))
-        await ctx.send(embed=spit)
+    async def kick(ctx, member:discord.Member, *, reason=None):
+        await member.kick(reason=reason)
+        await ctx.send(f'User @{member} has kicked.')
+
+
+    #     #---------Spotify Command LOL!---------#
+    # @bot.command()
+    # async def spotify(ctx, user:discord.Member, *, message=None):
+    #     spit = discord.Embed(title="", value="", color=0x189bcc)
+    #     spit.set_author(name=str(user) + "#" + disc, icon_url=avatar)
+    #     spit.add_field(name="Album", value=album, inline=True)
+    #     spit.add_field(name="Duration", value=stime, inline=True)
+    #     spit.add_field(name="Artist", value=str(art), inline=True)
+    #     spit.set_footer(text="Track ID: " + str(sid))
+    #     await ctx.send(embed=spit)
 
     bot.run(token)
 
