@@ -21,10 +21,13 @@ def main(argv):
     #client = discord.Client()
     bot = commands.Bot(command_prefix='t!',intents=intents,description="")
     bot.remove_command('help')
-    load_dotenv()
-    #token = os.getenv()
-    token = None
-    if token == None:
+    if len(argv) < 1:
+        try:
+            load_dotenv()
+            token = os.getenv()
+        except:
+            raise Exception(".env file not present please check .env or pass token via the command line")
+    elif len(argv[0]) > 0:
         token = argv[0]
     else:
         raise("Token does not work or is missing!")
@@ -80,7 +83,7 @@ def main(argv):
 
         #---------Random math command. May remove at a later date---------#
     @bot.command()
-    async def randommath(ctx, user:discord.Member, *, message=None):
+    async def randommath(ctx, *, message=None):
         lst = ['+', '-', '*', '/']
         math_embed = discord.Embed(title="math", description="math answer", color=0x11d43b)
         x = random.randint(-45000,45000)
@@ -133,13 +136,7 @@ def main(argv):
         await ctx.send(embed=ping_title)
 
 
-
-
-
-
-
-#require global vars username gname etc.
-        #---------User Information Command---------#
+    #require global vars username gname etc.
     @bot.command()
     async def userinfo(ctx, user:discord.Member= None, *, message=None):
         #print(user)
@@ -161,7 +158,6 @@ def main(argv):
 
 
         #---------Server Information Command---------#
-        #server.add_field(name="", value=, inline=True)
     @bot.command()
     async def serverinfo(message):
         server = discord.Embed(title="", description="", color=0x3c8009)
@@ -186,10 +182,6 @@ def main(argv):
         await ctx.send(embed=spit)
 
     bot.run(token)
-
-
-
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])
