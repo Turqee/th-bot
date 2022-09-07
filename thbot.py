@@ -3,7 +3,6 @@ from asyncio import sleep
 import os, random, discord, sys, time, minestat, itertools, threading
 from importlib.abc import TraversableResources
 from click import pass_context
-from turtle import color, title
 from unicodedata import name
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
