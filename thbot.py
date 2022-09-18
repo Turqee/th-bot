@@ -7,24 +7,24 @@ from unicodedata import name
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 # from discord.ext.commands import bot
-from discord.ext import commands
-# from discord_ui import Button
- 
+from discord.ext import commands 
 def main(argv):
 
     
     intents=discord.Intents.all()
     intents.members = True
+    
+
     #intents.message_content = True
     #bot = discord.bot(intents=discord.Intents.default())
     #intents = discord.Intents().all()
     print("Bot loading...")
+    
     animation = ["[■□□□□□□□□□]","[■■□□□□□□□□]", "[■■■□□□□□□□]", "[■■■■□□□□□□]", "[■■■■■□□□□□]", "[■■■■■■□□□□]", "[■■■■■■■□□□]", "[■■■■■■■■□□]", "[■■■■■■■■■□]", "[■■■■■■■■■■]"]
     for i in range(len(animation)):
         time.sleep(0.2)
         sys.stdout.write("\r" + animation[i % len(animation)])
         sys.stdout.flush()
-#here is the animation
 
     #client = discord.Client()
     bot = commands.Bot(command_prefix='t!',intents=intents,description="")
@@ -40,7 +40,7 @@ def main(argv):
     else:
         raise("Token does not work or is missing!")
 
-    print("Token: " + token)
+    print("\nToken: " + token)
 
     @bot.event
     async def on_ready():
@@ -141,16 +141,15 @@ def main(argv):
 
     #require global vars username gname etc.
     @bot.command()
-    async def userinfo(ctx, user:discord.Member= None):
+    async def userinfo(ctx, user:discord.Member=None):
         #print(user)\\
-        #print(ctx.message.author.avatar.url)
+        #print(ctx.message.author.avatar.url
         if user != None:
             info = discord.Embed(title="",  description="", color=0x481c70)
+            info.set_thumbnail(url=user.avatar_url)
             info.set_author(name=user.name, icon_url=user.avatar_url)
-            info.add_field(name=":id:User ID", value="*" + str(user.id) + "*")
-            info.add_field(name=":name_badge:Username", value="*" + str(user.name).split('#')[0] + "*",  inline=False)
-            info.add_field(name=":robot:Bot", value="*" + str(user.bot) + "*")
-            info.add_field(name="Discriminator :hash:", value="*" + user.discriminator + "*", inline=False)
+            info.add_field(name="Information", value="**:id: User ID: ** " + str(user.id) + "\n **:robot: Bot:** ***" + str(user.bot) + "***" + "\n **:hash: Discriminator: **" + user.discriminator, inline=False)
+            info.add_field(name="Roles")
             info.set_footer(text="Profile creation: " + user.created_at.strftime("%Y-%m-%d, %H:%M:%S") + " | Requested by: " + ctx.author.name )
             await ctx.reply(embed=info, mention_author = False)
         else:
@@ -181,17 +180,40 @@ def main(argv):
         
     @bot.command()
     async def kick(ctx, member:discord.Member, *, reason=None):
-        
         try:
-        
             await member.kick(reason=reason)
             await ctx.send(f'User <@{str(member.id)}> has been kicked.')
         except Exception as err:
             error = discord.Embed(title="", description="", color=0xd000db)
-            error.add_field(name=":octagonal_sign: Error :octagonal_sign:", value="You cannot kick this member/You do not have the correct permissions!", inline=False)
+            error.add_field(name="<a:shimy:1020126329036881920> Error <a:shimy:1020126329036881920>", value="You cannot kick this member/You do not have the correct permissions!", inline=False)
             error.set_footer(text="Error Code: {}".format(err))
             await ctx.reply(embed=error, mention_author = True)
-        
+            
+    @bot.command()
+    async def ban(ctx, member:discord.Member, *, reason=None):
+        try:
+            await ctx.guild.ban(member, reason=reason) # Bans the user.
+            await member.send(f"You have been banned in {ctx.guild} for {reason}") # Private messages user.
+            await ctx.send(f"<@{str(member.id)}> has been successfully banned.")
+        except Exception as err2:
+            error2 = discord.Embed(title="", description="", color=0xd000db)
+            error2.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You cannot ban this member/You do not have the correct permissions!", inline=False)
+            error2.set_footer(text="Error Code: {}".format(err2))
+            await ctx.reply(embed=error2, mention_author = True)
+
+    @bot.command()
+    async def addRole(self, ctx, user : discord.Member, *, role : discord.Role):
+        if role in user.roles:
+            await ctx.send("User already has {role}")
+        else:
+            await user.add_roles(role)
+            await ctx.send("Added {role} to {user.mention}")
+    
+    @bot.command()
+    async def unban(ctx, id: int):
+            user = await bot.fetch_user(id)
+            await ctx.guild.unban(user)
+
     @bot.command()
     async def mserv(ctx):
         ms = minestat.MineStat('54.39.8.33', 25590)
@@ -207,18 +229,31 @@ def main(argv):
             await ctx.send('Server is offline!')
             
             
-    #     #---------Spotify Command LOL!---------#  
-    # @bot.command()
-    # async def spotify(ctx, user:discord.Member, *, message=None):
-    #     spit = discord.Embed(title="", value="", color=0x189bcc)
-    #     spit.set_author(name=str(user) + "#" + disc, icon_url=avatar)
-    #     spit.add_field(name="Album", value=album, inline=True)
-    #     spit.add_field(name="Duration", value=stime, inline=True)
-    #     spit.add_field(name="Artist", value=str(art), inline=True)
-    #     spit.set_footer(text="Track ID: " + str(sid))
-    #     await ctx.send(embed=spit)
-
+    @bot.command(pass_context=True)
+    async def join(ctx):
+        if (ctx.author.voice):
+            channel = ctx.message.author.voice.channel
+            await channel.connect()
+        else:
+            await ctx.send("<a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920>")
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
     bot.run(token)
-
 if __name__ == "__main__":
     main(sys.argv[1:])
