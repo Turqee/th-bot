@@ -7,14 +7,11 @@ from unicodedata import name
 from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 # from discord.ext.commands import bot
-from discord.ext import commands 
+from discord.ext import commands
+ 
 def main(argv):
-
-    
     intents=discord.Intents.all()
     intents.members = True
-    
-
     #intents.message_content = True
     #bot = discord.bot(intents=discord.Intents.default())
     #intents = discord.Intents().all()
@@ -22,7 +19,7 @@ def main(argv):
     
     animation = ["[■□□□□□□□□□]","[■■□□□□□□□□]", "[■■■□□□□□□□]", "[■■■■□□□□□□]", "[■■■■■□□□□□]", "[■■■■■■□□□□]", "[■■■■■■■□□□]", "[■■■■■■■■□□]", "[■■■■■■■■■□]", "[■■■■■■■■■■]"]
     for i in range(len(animation)):
-        time.sleep(0.2)
+        time.sleep(0.05)
         sys.stdout.write("\r" + animation[i % len(animation)])
         sys.stdout.flush()
 
@@ -46,7 +43,6 @@ def main(argv):
     async def on_ready():
         status=["wit dey worm", "with twitch source code", "Skate 3", "theroy.tech", "im here for cs club", "with finkey 🥺", "clash royale", "with java", "with theroy's head", "Minecraft - 20 Years Elapsed", "gorillaz spotify", "Google Chrome", "Dead Cells", "Fortnite (<--- FUNNY JOKE)" ]
         rstatus = random.choice(status)
-        print("Bot loading complete.")
         await bot.change_presence(activity=discord.Game( rstatus +' | t!help in ' + str(len(bot.guilds)) + ' servers.'), status=discord.Status.idle)
 
     @bot.event
@@ -228,32 +224,15 @@ def main(argv):
         else:
             await ctx.send('Server is offline!')
             
-            
-    @bot.command(pass_context=True)
-    async def join(ctx):
-        if (ctx.author.voice):
-            channel = ctx.message.author.voice.channel
-            await channel.connect()
-        else:
-            await ctx.send("<a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920><a:shimy:1020126329036881920>")
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+    @bot.command()
+    async def join(ctx): 
+        channel = ctx.message.author.voice.channel
+        voice = await channel.connect()  
+        player = voice.play(discord.FFmpegPCMAudio("bentalk(1).wav"))
+        
+        
+        
     bot.run(token)
+    print("Bot loading complete.")
 if __name__ == "__main__":
     main(sys.argv[1:])
