@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from asyncio import sleep
-import os, random, discord, sys, time, minestat, itertools, threading
+import os, random, discord, sys, time, minestat, itertools, threading, asyncio
 from importlib.abc import TraversableResources
 from click import pass_context
 from unicodedata import name
@@ -69,14 +69,13 @@ def main(argv):
     async def help(ctx):
             color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
             rcolor = random.choice(color)
-            
             info = discord.Embed(title="Commands list:",  description="All existing commands", color=rcolor)
             info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
             info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
             info.add_field(name=":ping_pong:`t!ping`", value=":exploding_head:", inline=False)
             info.add_field(name=":receipt:`t!userinfo`", value="User information about yourself (Pinging others does not bring up theirs sadly).", inline=False)
             info.add_field(name=":signal_strength:`t!serverinfo`", value="Server information :exploding_head:", inline=False)
-            info.set_footer(text='Sumbit ideas and issues @ https://github.com/zTheroy/theroy-discord-bot/issues')
+            info.set_footer(text='Sumbit ideas and issues @ https://github.com/Turqww/theroy-discord-bot/issues')
             await ctx.send(embed=info, mention_author=False)
             #await ctx.send("test")
 
@@ -209,30 +208,87 @@ def main(argv):
     async def unban(ctx, id: int):
             user = await bot.fetch_user(id)
             await ctx.guild.unban(user)
-
+          
+    print("Bot loading complete.")
     @bot.command()
-    async def mserv(ctx):
-        ms = minestat.MineStat('54.39.8.33', 25590)
-        if ms.online:
-            em = discord.Embed(title=":joystick: SMP Server Status", description="", color=0x02f089)
-            em.add_field(name="🟢 Server Status", value='Server is online running version %s with %s out of %s players.' % (ms.version, ms.current_players, ms.max_players), inline=False)
-            em.add_field(name="🛰️ Ping", value='Latency: %sms' % ms.latency, inline=False)
-            em.add_field(name=':speech_left: Message of the day', value= str(ms.motd), inline=False)
-            em.add_field(name="🖥️ Protocol", value='Connected using protocol: %s' % ms.slp_protocol, inline=False)
-            em.set_footer(text="Minecraft server status of %s on port %d" % (ms.address, ms.port) + " | Requested by: " + ctx.author.name)
-            await ctx.send(embed=em)
-        else:
-            await ctx.send('Server is offline!')
+    async def ghost(ctx): 
+        try:
+            channel = ctx.message.author.voice.channel
+            voice = await channel.connect()  
+            player = voice.play(discord.FFmpegPCMAudio("bentalk(1).wav"))
+            time.sleep(5.5)
+            await voice.disconnect()         
+        except Exception as err4:
+            error4 = discord.Embed(title="", description="", color=0xd000db)
+            error4.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
+            error4.set_footer(text="Error Code: {}".format(err4))
+            await ctx.reply(embed=error4, mention_author = True)
             
     @bot.command()
-    async def join(ctx): 
-        channel = ctx.message.author.voice.channel
-        voice = await channel.connect()  
-        player = voice.play(discord.FFmpegPCMAudio("bentalk(1).wav"))
-        
-        
+    async def gummy(ctx):
+        try:
+            channel = ctx.message.author.voice.channel
+            voice = await channel.connect()  
+            player = voice.play(discord.FFmpegPCMAudio("gummy.wav"))
+            time.sleep(8.5)
+            await voice.disconnect()         
+        except Exception as err5:
+            error5 = discord.Embed(title="", description="", color=0xd000db)
+            error5.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
+            error5.set_footer(text="Error Code: {}".format(err5))
+            await ctx.reply(embed=error5, mention_author = True)
+            
+    @bot.command()
+    async def pipe(ctx):
+        try:
+            channel = ctx.message.author.voice.channel
+            voice = await channel.connect()  
+            player = voice.play(discord.FFmpegPCMAudio("pipe.mp3"))
+            time.sleep(1.5)
+            await voice.disconnect()         
+        except Exception as err6:
+            error6 = discord.Embed(title="", description="", color=0xd000db)
+            error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
+            error6.set_footer(text="Error Code: {}".format(err6))
+            await ctx.reply(embed=error6, mention_author = True)
+                    
+            
+    # @bot.command()
+    # async def pages(ctx):
+    #     contents = ["This is page 1!", "This is page 2!", "This is page 3!", "This is page 4!"]
+    #     pages = 4
+    #     cur_page = 1
+    #     message = await ctx.send(f"Page {cur_page}/{pages}:\n{contents[cur_page-1]}")
+    #     # getting the message object for editing and reacting
+
+    #     await message.add_reaction("◀️")
+    #     await message.add_reaction("▶️")
+
+    #     def check(reaction, user):
+    #         return user == ctx.author and str(reaction.emoji) in ["◀️", "▶️"]
+
+    #     while True:
+    #         try:
+    #             reaction, user = await bot.wait_for("reaction_add", timeout=60, check=check)
+
+    #             if str(reaction.emoji) == "▶️" and cur_page != pages:
+    #                 cur_page += 1
+    #                 await message.edit(embed=help)
+    #                 await message.remove_reaction(reaction, user)
+
+    #             elif str(reaction.emoji) == "◀️" and cur_page > 1:
+    #                 cur_page -= 1
+    #                 await message.edit(content=f"Page {cur_page}/{pages}:\n{contents[cur_page-1]}")
+    #                 await message.remove_reaction(reaction, user)
+
+    #             else:
+    #                 await message.remove_reaction(reaction, user)
+
+    #         except asyncio.TimeoutError:
+    #             await message.delete()
+    #             break
+
         
     bot.run(token)
-    print("Bot loading complete.")
 if __name__ == "__main__":
     main(sys.argv[1:])
