@@ -67,17 +67,64 @@ def main(argv):
 
     @bot.command()
     async def help(ctx):
-            color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
-            rcolor = random.choice(color)
-            info = discord.Embed(title="Commands list:",  description="All existing commands", color=rcolor)
-            info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
-            info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
-            info.add_field(name=":ping_pong:`t!ping`", value=":exploding_head:", inline=False)
-            info.add_field(name=":receipt:`t!userinfo`", value="User information about yourself (Pinging others does not bring up theirs sadly).", inline=False)
-            info.add_field(name=":signal_strength:`t!serverinfo`", value="Server information :exploding_head:", inline=False)
-            info.set_footer(text='Sumbit ideas and issues @ https://github.com/Turqww/theroy-discord-bot/issues')
-            await ctx.send(embed=info, mention_author=False)
-            #await ctx.send("test")
+        main = discord.Embed(title="Hi! I'm ThBot!", description="")
+        main.add_field(name=":)", value="To get started, press the page buttons to check out my commands! Thanks for adding me! :D")
+        main.set_footer(text='Submit ideas and issues @ https://github.com/Turqee/th-bot')
+        message = await ctx.send(embed=main, mention_author=False)
+        await message.add_reaction("1️⃣")
+        await message.add_reaction("2️⃣")
+        await message.add_reaction("3️⃣")
+        await message.add_reaction("4️⃣")
+        def check(reaction, user):
+            return user == ctx.author and str(reaction.emoji) in ["1️⃣", "2️⃣", "3️⃣", "4️⃣"]
+        while True:
+            try:
+                reaction, user = await bot.wait_for("reaction_add", timeout=60, check=check)
+                if str(reaction.emoji) == "1️⃣":
+                    color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
+                    rcolor = random.choice(color)
+                    info = discord.Embed(title="Fun Commands",  description="", color=rcolor)
+                    info.add_field(name=":star_struck:`t!inspiration`", value="makes you go :O", inline=False)
+                    info.add_field(name=":1234:`t!randommath`", value="random math. adds numbers -45000-45000", inline=True)
+                    await message.remove_reaction(reaction, user)
+                    await message.edit(embed=info)
+                
+                elif str(reaction.emoji) == "2️⃣":
+                    color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
+                    rcolor = random.choice(color)
+                    info2 = discord.Embed(title="Info Commands", description="", color=rcolor)
+                    info2.add_field(name=":ping_pong:`t!ping`", value="Brings up amount of time it takes ping discords servers (kinda broken)", inline=False)
+                    info2.add_field(name=":receipt:`t!userinfo`", value="User information about others/yourself", inline=False)
+                    info2.add_field(name=":signal_strength:`t!serverinfo`", value="Server information :exploding_head:", inline=False)
+                    await message.remove_reaction(reaction, user)
+                    await message.edit(embed=info2)
+                # color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
+                # rcolor = random.choice(color)
+                # info = discord.Embed(title="", description="", color=rcolor)
+                # info.add_field(name="", value="", inline=False)
+                # await message.remove_reaction(reaction, user)
+                # await message.edit(embed=info)
+                elif str(reaction.emoji) == "3️⃣":
+                    color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
+                    rcolor = random.choice(color)
+                    info3 = discord.Embed(title="Admin Commands", description="", color=rcolor)
+                    info3.add_field(name=":foot:`t!kick`", value="Kicks a user", inline=False)
+                    info3.add_field(name=":hammer:`t!ban`", value="Bans a user, if you want to give a reason it is formated as: t!ban (user) (reason)", inline=False)
+                    info3.add_field(name=":flag_white:`t!addrole` (WIP)", value="Creates/adds a role and gives it to the user specified", inline=False)
+                    await message.remove_reaction(reaction, user)
+                    await message.edit(embed=info3)
+                elif str(reaction.emoji) == "4️⃣":
+                    color = [0xff0000, 0xff4d00, 0xfcca03, 0x37ff00, 0x0059ff, 0xa200ff]
+                    rcolor = random.choice(color)
+                    info4 = discord.Embed(title="Voice Commands", description="dont spam them (do)", color=rcolor)
+                    info4.add_field(name=":ghost:`t!ghost`", value="am i talking to a ghost", inline=False)
+                    info4.add_field(name=":elephant:`t!gummy`", value="gummy elephant inside my gummy elephant worms look:", inline=False)
+                    info4.add_field(name=":shower:`t!pipe`", value="half life 2 reference <:isaacPOG:862852608128188426><:isaacPOG:862852608128188426><:isaacPOG:862852608128188426>", inline=False)
+                    await message.remove_reaction(reaction, user)
+                    await message.edit(embed=info4)
+            except asyncio.TimeoutError:
+                await message.delete()
+                break
 
         #---------Random math command. May remove at a later date---------#
     @bot.command()
@@ -144,7 +191,6 @@ def main(argv):
             info.set_thumbnail(url=user.avatar_url)
             info.set_author(name=user.name, icon_url=user.avatar_url)
             info.add_field(name="Information", value="**:id: User ID: ** " + str(user.id) + "\n **:robot: Bot:** ***" + str(user.bot) + "***" + "\n **:hash: Discriminator: **" + user.discriminator, inline=False)
-            info.add_field(name="Roles")
             info.set_footer(text="Profile creation: " + user.created_at.strftime("%Y-%m-%d, %H:%M:%S") + " | Requested by: " + ctx.author.name )
             await ctx.reply(embed=info, mention_author = False)
         else:
@@ -251,44 +297,7 @@ def main(argv):
             error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
             error6.set_footer(text="Error Code: {}".format(err6))
             await ctx.reply(embed=error6, mention_author = True)
-                    
-            
-    # @bot.command()
-    # async def pages(ctx):
-    #     contents = ["This is page 1!", "This is page 2!", "This is page 3!", "This is page 4!"]
-    #     pages = 4
-    #     cur_page = 1
-    #     message = await ctx.send(f"Page {cur_page}/{pages}:\n{contents[cur_page-1]}")
-    #     # getting the message object for editing and reacting
 
-    #     await message.add_reaction("◀️")
-    #     await message.add_reaction("▶️")
-
-    #     def check(reaction, user):
-    #         return user == ctx.author and str(reaction.emoji) in ["◀️", "▶️"]
-
-    #     while True:
-    #         try:
-    #             reaction, user = await bot.wait_for("reaction_add", timeout=60, check=check)
-
-    #             if str(reaction.emoji) == "▶️" and cur_page != pages:
-    #                 cur_page += 1
-    #                 await message.edit(embed=help)
-    #                 await message.remove_reaction(reaction, user)
-
-    #             elif str(reaction.emoji) == "◀️" and cur_page > 1:
-    #                 cur_page -= 1
-    #                 await message.edit(content=f"Page {cur_page}/{pages}:\n{contents[cur_page-1]}")
-    #                 await message.remove_reaction(reaction, user)
-
-    #             else:
-    #                 await message.remove_reaction(reaction, user)
-
-    #         except asyncio.TimeoutError:
-    #             await message.delete()
-    #             break
-
-        
     bot.run(token)
 if __name__ == "__main__":
     main(sys.argv[1:])
