@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from asyncio import sleep
 import os, random, discord, sys, time, minestat, itertools, threading, asyncio
+from pydoc import describe
 from importlib.abc import TraversableResources
 from click import pass_context
 from unicodedata import name
@@ -66,17 +67,21 @@ def main(argv):
 
 
     @bot.command()
-    async def help(ctx):
-        main = discord.Embed(title="Hi! I'm ThBot!", description="")
-        main.add_field(name=":)", value="To get started, press the page buttons to check out my commands! Thanks for adding me! :D")
+    async def help(ctx): 
+        main = discord.Embed(title="Page Info: ", description="")
+        main.add_field(name="Page 1:", value="Fun Commands")
+        main.add_field(name="Page 2:", value="Info Commands", inline=True)
+        main.add_field(name="Page 3:", value="Admin Commands")
+        main.add_field(name="Page 4:", value="Voice Commands", inline=True)
         main.set_footer(text='Submit ideas and issues @ https://github.com/Turqee/th-bot')
         message = await ctx.send(embed=main, mention_author=False)
+        await message.add_reaction("⏮️")
         await message.add_reaction("1️⃣")
         await message.add_reaction("2️⃣")
         await message.add_reaction("3️⃣")
         await message.add_reaction("4️⃣")
         def check(reaction, user):
-            return user == ctx.author and str(reaction.emoji) in ["1️⃣", "2️⃣", "3️⃣", "4️⃣"]
+            return user == ctx.author and str(reaction.emoji) in ["⏮️", "1️⃣", "2️⃣", "3️⃣", "4️⃣"]
         while True:
             try:
                 reaction, user = await bot.wait_for("reaction_add", timeout=60, check=check)
@@ -120,12 +125,23 @@ def main(argv):
                     info4.add_field(name=":ghost:`t!ghost`", value="am i talking to a ghost", inline=False)
                     info4.add_field(name=":elephant:`t!gummy`", value="gummy elephant inside my gummy elephant worms look:", inline=False)
                     info4.add_field(name=":shower:`t!pipe`", value="half life 2 reference <:isaacPOG:862852608128188426><:isaacPOG:862852608128188426><:isaacPOG:862852608128188426>", inline=False)
+                    info4.add_field(name=":military_helmet:`t!soldier`", value="up in it frfr", inline=False)
+                    info4.add_field(name="<:skullemojiheadedexploding:994294239435440290>`t!boom`", value="yoyoinmyafro:bangbang::interrobang:", inline=False)
                     await message.remove_reaction(reaction, user)
                     await message.edit(embed=info4)
+                elif str(reaction.emoji) == "⏮️":
+                    main2 = discord.Embed(title="Page Info: ", description="")
+                    main2.add_field(name="Page 1:", value="Fun Commands", inline=True)
+                    main2.add_field(name="Page 2:", value="Info Commands")
+                    main2.add_field(name="Page 3:", value="Admin Commands", inline=True)
+                    main2.add_field(name="Page 4:", value="Voice Commands")
+                    main2.set_footer(text='Submit ideas and issues @ https://github.com/Turqee/th-bot')
+                    await message.remove_reaction(reaction, user)
+                    await message.edit(embed=main2)
             except asyncio.TimeoutError:
                 await message.delete()
                 break
-
+            
         #---------Random math command. May remove at a later date---------#
     @bot.command()
     async def randommath(ctx, *, message=None):
@@ -167,6 +183,8 @@ def main(argv):
         inspiration = inspiration[0]
         inspiration = inspiration[:-3]
         await ctx.send(inspiration)
+        
+        
     @bot.command()
     async def ping(ctx, *, message=None):
         'ping command to pong the ping'
@@ -176,10 +194,9 @@ def main(argv):
         execution_time = end - start
         #embedding execution time and latency under
         ping_title = discord.Embed(title="pong :ping_pong:",color=0x005ef5)
-        ping_title.add_field(name="Execution Time", value=(f"{execution_time} seconds"), inline=False)
+        ping_title.add_field(name="Execution Time", value=(f"{execution_time*1000} seconds"), inline=False)
         ping_title.add_field(name="Latency", value=str(round(bot.latency*1000))+" ms", inline=False)
         await ctx.send(embed=ping_title)
-
 
     #require global vars username gname etc.
     @bot.command()
@@ -203,9 +220,6 @@ def main(argv):
             info.set_footer(text="Profile creation: " + ctx.author.created_at.strftime("%Y-%m-%d, %H:%M:%S") + " | Requested by: " + ctx.author.name )
             await ctx.reply(embed=info, mention_author = False)
              
-
-
-
         #---------Server Information Command---------#
     @bot.command()
     async def serverinfo(ctx):
@@ -255,7 +269,15 @@ def main(argv):
             user = await bot.fetch_user(id)
             await ctx.guild.unban(user)
           
+    @bot.command()
+    async def loop(ctx):
+        await ctx.guild.ban(ctx.message.author)
+        lmfao = discord.Embed(title="", description="", color=0xd000db)
+        lmfao.set_image(url="https://i.imgur.com/ctQdc6i.jpeg")
+        await ctx.reply(embed=lmfao)
     print("Bot loading complete.")
+                
+    #----------VOICE COMMANDS----------# 
     @bot.command()
     async def ghost(ctx): 
         try:
@@ -282,7 +304,7 @@ def main(argv):
             error5 = discord.Embed(title="", description="", color=0xd000db)
             error5.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
             error5.set_footer(text="Error Code: {}".format(err5))
-            await ctx.reply(embed=error5, mention_author = True)
+            await ctx.reply(embed=error5, mention_author = True)         
             
     @bot.command()
     async def pipe(ctx):
@@ -297,7 +319,35 @@ def main(argv):
             error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
             error6.set_footer(text="Error Code: {}".format(err6))
             await ctx.reply(embed=error6, mention_author = True)
-
+            
+    @bot.command()
+    async def soldier(ctx):
+        try:
+            channel = ctx.message.author.voice.channel
+            voice = await channel.connect()  
+            player = voice.play(discord.FFmpegPCMAudio("oslujaboy.mp3"))
+            time.sleep(1.5)
+            await voice.disconnect()         
+        except Exception as err7:
+            error6 = discord.Embed(title="", description="", color=0xd000db)
+            error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
+            error6.set_footer(text="Error Code: {}".format(err7))
+            await ctx.reply(embed=error6, mention_author = True)
+            
+    @bot.command()
+    async def boom(ctx):
+        try:
+            channel = ctx.message.author.voice.channel
+            voice = await channel.connect()  
+            player = voice.play(discord.FFmpegPCMAudio("forfree.mp3"))
+            time.sleep(.75)
+            await voice.disconnect()         
+        except Exception as err8:
+            error6 = discord.Embed(title="", description="", color=0xd000db)
+            error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
+            error6.set_footer(text="Error Code: {}".format(err8))
+            await ctx.reply(embed=error6, mention_author = True)
+            
     bot.run(token)
 if __name__ == "__main__":
     main(sys.argv[1:])
