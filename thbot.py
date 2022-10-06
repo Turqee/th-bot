@@ -244,6 +244,8 @@ def main(argv):
             error.set_footer(text="Error Code: {}".format(err))
             await ctx.reply(embed=error, mention_author = True)
             
+
+            
     @bot.command()
     async def ban(ctx, member:discord.Member, *, reason=None):
         try:
@@ -269,12 +271,12 @@ def main(argv):
             user = await bot.fetch_user(id)
             await ctx.guild.unban(user)
           
-    @bot.command()
-    async def loop(ctx):
-        await ctx.guild.ban(ctx.message.author)
-        lmfao = discord.Embed(title="", description="", color=0xd000db)
-        lmfao.set_image(url="https://i.imgur.com/ctQdc6i.jpeg")
-        await ctx.reply(embed=lmfao)
+    # @bot.command()
+    # async def loop(ctx):
+    #     await ctx.guild.ban(ctx.message.author)
+    #     lmfao = discord.Embed(title="", description="", color=0xd000db)
+    #     lmfao.set_image(url="https://i.imgur.com/ctQdc6i.jpeg")
+    #     await ctx.reply(embed=lmfao)
     print("Bot loading complete.")
                 
     #----------VOICE COMMANDS----------# 
@@ -347,6 +349,8 @@ def main(argv):
             error6.add_field(name="<:NotLikeThis:857079883800772649> Error <:NotLikeThis:857079883800772649>", value="You are not in a voice channel!/I am already playing something!", inline=False)
             error6.set_footer(text="Error Code: {}".format(err8))
             await ctx.reply(embed=error6, mention_author = True)
+            
+
             
     bot.run(token)
 if __name__ == "__main__":
