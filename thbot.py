@@ -299,7 +299,7 @@ def main(argv):
         try:
             channel = ctx.message.author.voice.channel
             voice = await channel.connect()  
-            player = voice.play(discord.FFmpegPCMAudio("gummy.wav"))
+            player = voice.play(discord.FFmpegPCMAudio("./sounds/gummy.wav"))
             time.sleep(8.5)
             await voice.disconnect()         
         except Exception as err5:
@@ -313,7 +313,7 @@ def main(argv):
         try:
             channel = ctx.message.author.voice.channel
             voice = await channel.connect()  
-            player = voice.play(discord.FFmpegPCMAudio("pipe.mp3"))
+            player = voice.play(discord.FFmpegPCMAudio("./sounds/pipe.mp3"))
             time.sleep(1.5)
             await voice.disconnect()         
         except Exception as err6:
@@ -327,7 +327,7 @@ def main(argv):
         try:
             channel = ctx.message.author.voice.channel
             voice = await channel.connect()  
-            player = voice.play(discord.FFmpegPCMAudio("oslujaboy.mp3"))
+            player = voice.play(discord.FFmpegPCMAudio("./sounds/oslujaboy.mp3"))
             time.sleep(1.5)
             await voice.disconnect()         
         except Exception as err7:
@@ -341,7 +341,7 @@ def main(argv):
         try:
             channel = ctx.message.author.voice.channel
             voice = await channel.connect()  
-            player = voice.play(discord.FFmpegPCMAudio("forfree.mp3"))
+            player = voice.play(discord.FFmpegPCMAudio("./sounds/forfree.mp3"))
             time.sleep(.75)
             await voice.disconnect()         
         except Exception as err8:
