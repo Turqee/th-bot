@@ -285,7 +285,7 @@ def main(argv):
         try:
             channel = ctx.message.author.voice.channel
             voice = await channel.connect()  
-            player = voice.play(discord.FFmpegPCMAudio("bentalk(1).wav"))
+            player = voice.play(discord.FFmpegPCMAudio("./sounds/bentalk(1).wav"))
             time.sleep(5.5)
             await voice.disconnect()         
         except Exception as err4:
