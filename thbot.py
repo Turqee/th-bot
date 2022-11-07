@@ -205,14 +205,14 @@ def main(argv):
         #print(ctx.message.author.avatar.url
         if user != None:
             info = discord.Embed(title="",  description="", color=0x481c70)
-            info.set_thumbnail(url=user.avatar_url)
-            info.set_author(name=user.name, icon_url=user.avatar_url)
+            info.set_thumbnail(url=user.avatar)
+            info.set_author(name=user.name, icon_url=user.avatar)
             info.add_field(name="Information", value="**:id: User ID: ** " + str(user.id) + "\n **:robot: Bot:** ***" + str(user.bot) + "***" + "\n **:hash: Discriminator: **" + user.discriminator, inline=False)
             info.set_footer(text="Profile creation: " + user.created_at.strftime("%Y-%m-%d, %H:%M:%S") + " | Requested by: " + ctx.author.name )
             await ctx.reply(embed=info, mention_author = False)
         else:
             info = discord.Embed(title="",  description="", color=0x481c70)
-            info.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+            info.set_author(name=ctx.author.name, icon_url=ctx.author.avatar)
             info.add_field(name=":id:User ID", value="*" + str(ctx.author.id) + "*")
             info.add_field(name=":name_badge:Username", value="*" + str(ctx.author.name).split('#')[0] + "*",  inline=False)
             info.add_field(name=":robot:Bot", value="*" + str(ctx.author.bot) + "*")
@@ -223,8 +223,8 @@ def main(argv):
         #---------Server Information Command---------#
     @bot.command()
     async def serverinfo(ctx):
-        server = discord.Embed(title="", description="", color=0x3c8009)
-        server.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon_url)
+        server = discord.Embed(title="2", description="1",url=discord.embeds.EmptyEmbed, color=0x3c8009)
+        server.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon)
         server.add_field(name="Owner :judge:", value=ctx.guild.owner, inline=True)
         # server.add_field(name="2FA Required ", value=str(gmfa), inline=True)
         server.add_field(name="Channels :speech_balloon:", value=str(len(ctx.guild.text_channels)), inline=True)
@@ -271,12 +271,11 @@ def main(argv):
             user = await bot.fetch_user(id)
             await ctx.guild.unban(user)
           
-    # @bot.command()
-    # async def loop(ctx):
-    #     await ctx.guild.ban(ctx.message.author)
-    #     lmfao = discord.Embed(title="", description="", color=0xd000db)
-    #     lmfao.set_image(url="https://i.imgur.com/ctQdc6i.jpeg")
-    #     await ctx.reply(embed=lmfao)
+
+    
+
+        
+    
     print("Bot loading complete.")
                 
     #----------VOICE COMMANDS----------# 
