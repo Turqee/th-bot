@@ -1,1 +1,1 @@
-thBot bruh !
+idiot using sudo server
