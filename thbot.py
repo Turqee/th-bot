@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from urllib.request import urlopen, Request
 # from discord.ext.commands import bot
 from discord.ext import commands
+import praw
  
 def main(argv):
     intents=discord.Intents.all()
@@ -270,9 +271,26 @@ def main(argv):
     async def unban(ctx, id: int):
             user = await bot.fetch_user(id)
             await ctx.guild.unban(user)
+            await ctx.send(str(user) + " has been unbanned.")
+            
+    @bot.command()
+    async def far(message, ctx):
+            channel = message.channel
+            await ctx.send('Say hello!')
+
+            def check(m, ctx):
+                return m.content == 'hello' and m.channel == ctx.channel
+
+            msg = await bot.wait_for('message', check=check)
+            await ctx.send(f'Hello {msg.author}!')
           
 
-    
+    @bot.command()
+    async def loop(ctx, reason=None):
+        msg = await bot.wait_for('message')
+        await ctx.send(f'@everyone {msg.author} IS FUCKING STUPID! https://imgur.com/IfhnChY')
+        await ctx.author.ban(reason=reason)
+        
 
         
     
@@ -349,8 +367,27 @@ def main(argv):
             error6.set_footer(text="Error Code: {}".format(err8))
             await ctx.reply(embed=error6, mention_author = True)
             
+    # reddit = praw.Reddit(
+    #     client_id="FQbrPH0cRyzBQFNi8IN6iw",
+    #     client_secret="nUHw0ATMeocMqv92bnG2ykNlKa0Z5w",
+    #     password="VsPJ8xayDigo29T3ykUR",
+    #     user_agent="testscript by u/thbot",
+    #     username="thbot",
+    # )
+    # reddit.read_only = True   
+    # input1 = input("Enter Subreddit: ")
+    # subreddit = reddit.subreddit(input1)
+    # try:
+    #     for submission in subreddit.new(limit=5):
+    #         title = submission.title
+    #         print(submission.title)
+    # except Exception as err:
+    #     print("Subreddit not found!")        
+        
 
-            
+    
+       
+        
     bot.run(token)
 if __name__ == "__main__":
     main(sys.argv[1:])
