@@ -368,9 +368,6 @@ def main(argv):
             await ctx.reply(embed=error6, mention_author = True)
             
     # reddit = praw.Reddit(
-    #     client_id="FQbrPH0cRyzBQFNi8IN6iw",
-    #     client_secret="nUHw0ATMeocMqv92bnG2ykNlKa0Z5w",
-    #     password="VsPJ8xayDigo29T3ykUR",
     #     user_agent="testscript by u/thbot",
     #     username="thbot",
     # )
